@@ -195,8 +195,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center gap-2">
-          <span class="text-2xl font-bold tracking-tight text-white flex items-baseline">
-            <span class="text-accent-500 text-[26px]">β</span>etaFleet
+          <span class="text-3xl sm:text-4xl font-bold tracking-tight text-white flex items-baseline">
+            <span class="text-accent-500 drop-shadow-[0_0_8px_rgba(249,115,22,0.5)]">β</span>etaFleet
           </span>
         </div>
         <div class="hidden md:flex items-center gap-8">
@@ -205,7 +205,7 @@
           <a href="#roi" class="text-sm text-zinc-300 hover:text-white transition-colors">ROI</a>
           <a href="#funcionalidades" class="text-sm text-zinc-300 hover:text-white transition-colors">Funcionalidades</a>
           <a href="#antes-depois" class="text-sm text-zinc-300 hover:text-white transition-colors">Comparativo</a>
-          <button onclick="openModal()" class="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-5 py-2 rounded-lg transition-colors cursor-pointer">
+          <button onclick="openModal('demo')" class="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-5 py-2 rounded-lg transition-colors cursor-pointer">
             Solicitar Demonstração
           </button>
         </div>
@@ -221,7 +221,7 @@
         <a href="#roi" class="text-sm text-zinc-300 hover:text-white py-2">ROI</a>
         <a href="#funcionalidades" class="text-sm text-zinc-300 hover:text-white py-2">Funcionalidades</a>
         <a href="#antes-depois" class="text-sm text-zinc-300 hover:text-white py-2">Comparativo</a>
-        <button onclick="openModal()" class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors mt-2 cursor-pointer">
+        <button onclick="openModal('demo')" class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors mt-2 cursor-pointer">
           Solicitar Demonstração
         </button>
       </div>
@@ -251,7 +251,7 @@
             O BetaFleet centraliza informações da frota, acompanha indicadores críticos e ajuda gestores a tomar decisões rápidas para melhorar a eficiência operacional e o retorno financeiro.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
-            <button onclick="openModal()" class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-all shadow-lg shadow-accent-500/20 hover:shadow-accent-500/30 cursor-pointer">
+            <button onclick="openModal('demo')" class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-all shadow-lg shadow-accent-500/20 hover:shadow-accent-500/30 cursor-pointer">
               <i data-lucide="calendar" class="w-5 h-5"></i>
               Solicitar Demonstração
             </button>
@@ -1139,14 +1139,14 @@
         Descubra como o BetaFleet pode ajudar sua empresa a reduzir custos operacionais, aumentar a disponibilidade da frota e tomar decisões com base em dados reais.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <button onclick="openModal()" class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-semibold px-8 py-4 rounded-xl transition-all shadow-lg shadow-accent-500/20 hover:shadow-accent-500/30 text-lg cursor-pointer">
+        <button onclick="openModal('demo')" class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-semibold px-8 py-4 rounded-xl transition-all shadow-lg shadow-accent-500/20 hover:shadow-accent-500/30 text-lg cursor-pointer">
           <i data-lucide="calendar" class="w-5 h-5"></i>
           Solicitar Demonstração
         </button>
-        <a href="mailto:contato@betafleet.com.br" class="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium px-8 py-4 rounded-xl transition-all text-lg">
+        <button onclick="openModal('especialista')" class="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium px-8 py-4 rounded-xl transition-all text-lg cursor-pointer">
           <i data-lucide="message-circle" class="w-5 h-5"></i>
           Falar com um Especialista
-        </a>
+        </button>
       </div>
       <p class="text-sm text-zinc-500 mt-8">
         Sem compromisso. Demonstração personalizada para a sua operação.
@@ -1161,8 +1161,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="flex items-center gap-2">
-          <span class="text-xl font-bold tracking-tight text-white flex items-baseline">
-            <span class="text-accent-500 text-[22px]">β</span>etaFleet
+          <span class="text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-baseline">
+            <span class="text-accent-500 drop-shadow-[0_0_8px_rgba(249,115,22,0.5)]">β</span>etaFleet
           </span>
           <span class="text-[10px] font-medium text-zinc-500 uppercase tracking-[0.2em] ml-2">
             Evolution always
@@ -1194,14 +1194,15 @@
 
       <div id="formContainer">
         <div class="text-center mb-6">
-          <div class="w-12 h-12 bg-accent-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-            <i data-lucide="calendar" class="w-6 h-6 text-accent-600"></i>
+          <div class="w-12 h-12 bg-accent-100 rounded-xl flex items-center justify-center mx-auto mb-3" id="modalIconWrapper">
+            <i id="modalIcon" data-lucide="calendar" class="w-6 h-6 text-accent-600"></i>
           </div>
-          <h3 class="text-xl font-bold text-zinc-900">Solicitar Demonstração</h3>
-          <p class="text-sm text-zinc-500 mt-1">Preencha seus dados e entraremos em contato.</p>
+          <h3 class="text-xl font-bold text-zinc-900" id="modalTitle">Solicitar Demonstração</h3>
+          <p class="text-sm text-zinc-500 mt-1" id="modalDesc">Preencha seus dados e entraremos em contato.</p>
         </div>
 
         <form id="demoForm" action="https://formspree.io/f/xdavnekk" method="POST">
+          <input type="hidden" name="_subject" id="formSubject" value="Solicitação de Demonstração - BetaFleet">
           <div class="form-group">
             <label class="form-label" for="nome">Nome</label>
             <input class="form-input" type="text" id="nome" name="nome" required placeholder="Seu nome completo">
@@ -1243,8 +1244,8 @@
         <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <i data-lucide="check" class="w-8 h-8 text-green-600"></i>
         </div>
-        <h3 class="text-xl font-bold text-zinc-900 mb-2">Recebemos sua solicitação!</h3>
-        <p class="text-sm text-zinc-500">Entraremos em contato em até 24 horas úteis para agendar sua demonstração personalizada.</p>
+        <h3 class="text-xl font-bold text-zinc-900 mb-2" id="successTitle">Recebemos sua solicitação!</h3>
+        <p class="text-sm text-zinc-500" id="successDesc">Entraremos em contato em até 24 horas úteis para agendar sua demonstração personalizada.</p>
         <button onclick="closeModal()" class="mt-6 text-sm font-semibold text-accent-500 hover:text-accent-600 transition-colors">
           Fechar
         </button>
@@ -1257,7 +1258,36 @@
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <script>
     // Modal
-    function openModal() {
+    function openModal(type) {
+      const title = document.getElementById('modalTitle');
+      const desc = document.getElementById('modalDesc');
+      const icon = document.getElementById('modalIcon');
+      const successTitle = document.getElementById('successTitle');
+      const successDesc = document.getElementById('successDesc');
+
+      // Reset form
+      document.getElementById('formContainer').style.display = '';
+      document.getElementById('formSuccess').classList.remove('show');
+      document.getElementById('formError').classList.remove('show');
+      document.getElementById('demoForm').reset();
+
+      if (type === 'especialista') {
+        title.textContent = 'Falar com um Especialista';
+        desc.textContent = 'Deixe seus dados e um especialista BetaFleet entrará em contato.';
+        icon.setAttribute('data-lucide', 'message-circle');
+        successTitle.textContent = 'Recebemos seu contato!';
+        successDesc.textContent = 'Um especialista entrará em contato em até 24 horas úteis para entender suas necessidades.';
+        document.getElementById('formSubject').value = 'Contato com Especialista - BetaFleet';
+      } else {
+        title.textContent = 'Solicitar Demonstração';
+        desc.textContent = 'Preencha seus dados e entraremos em contato.';
+        icon.setAttribute('data-lucide', 'calendar');
+        successTitle.textContent = 'Recebemos sua solicitação!';
+        successDesc.textContent = 'Entraremos em contato em até 24 horas úteis para agendar sua demonstração personalizada.';
+        document.getElementById('formSubject').value = 'Solicitação de Demonstração - BetaFleet';
+      }
+
+      lucide.createIcons();
       document.getElementById('demoModal').classList.add('open');
       document.body.classList.add('modal-open');
     }
