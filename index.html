@@ -76,6 +76,114 @@
     .mockup-shadow {
       box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255,255,255,0.05);
     }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-content {
+      background: #fff;
+      border-radius: 1.25rem;
+      width: 100%;
+      max-width: 480px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      box-shadow: 0 25px 60px -12px rgba(0,0,0,0.4);
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+    }
+    .modal-overlay.open .modal-content {
+      transform: translateY(0);
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #9ca3af;
+      padding: 0.25rem;
+      border-radius: 0.5rem;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: #111827; }
+    .modal-content { position: relative; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 0.375rem;
+    }
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.75rem;
+      font-size: 0.9375rem;
+      color: #1e293b;
+      background: #fff;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: #f97316;
+      box-shadow: 0 0 0 3px rgba(249,115,22,0.1);
+    }
+    .form-textarea { resize: vertical; min-height: 80px; }
+    .form-btn {
+      width: 100%;
+      background: #f97316;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.875rem;
+      border: none;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .form-btn:hover { background: #ea580c; }
+    .form-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem 0;
+    }
+    .form-success.show { display: block; }
+    .form-error {
+      color: #dc2626;
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+    .form-error.show { display: block; }
+    body.modal-open { overflow: hidden; }
   </style>
 </head>
 <body class="bg-white text-zinc-900 antialiased">
@@ -97,9 +205,9 @@
           <a href="#roi" class="text-sm text-zinc-300 hover:text-white transition-colors">ROI</a>
           <a href="#funcionalidades" class="text-sm text-zinc-300 hover:text-white transition-colors">Funcionalidades</a>
           <a href="#antes-depois" class="text-sm text-zinc-300 hover:text-white transition-colors">Comparativo</a>
-          <a href="#cta-final" class="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-5 py-2 rounded-lg transition-colors">
+          <button onclick="openModal()" class="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-5 py-2 rounded-lg transition-colors cursor-pointer">
             Solicitar Demonstração
-          </a>
+          </button>
         </div>
         <button id="mobile-menu-btn" class="md:hidden text-white p-2">
           <i data-lucide="menu" class="w-6 h-6"></i>
@@ -113,9 +221,9 @@
         <a href="#roi" class="text-sm text-zinc-300 hover:text-white py-2">ROI</a>
         <a href="#funcionalidades" class="text-sm text-zinc-300 hover:text-white py-2">Funcionalidades</a>
         <a href="#antes-depois" class="text-sm text-zinc-300 hover:text-white py-2">Comparativo</a>
-        <a href="#cta-final" class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors mt-2">
+        <button onclick="openModal()" class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors mt-2 cursor-pointer">
           Solicitar Demonstração
-        </a>
+        </button>
       </div>
     </div>
   </nav>
@@ -143,10 +251,10 @@
             O BetaFleet centraliza informações da frota, acompanha indicadores críticos e ajuda gestores a tomar decisões rápidas para melhorar a eficiência operacional e o retorno financeiro.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
-            <a href="#cta-final" class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-all shadow-lg shadow-accent-500/20 hover:shadow-accent-500/30">
+            <button onclick="openModal()" class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-all shadow-lg shadow-accent-500/20 hover:shadow-accent-500/30 cursor-pointer">
               <i data-lucide="calendar" class="w-5 h-5"></i>
               Solicitar Demonstração
-            </a>
+            </button>
             <a href="#solucao" class="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium px-7 py-3.5 rounded-xl transition-all">
               <i data-lucide="play-circle" class="w-5 h-5"></i>
               Ver como funciona
@@ -1031,11 +1139,11 @@
         Descubra como o BetaFleet pode ajudar sua empresa a reduzir custos operacionais, aumentar a disponibilidade da frota e tomar decisões com base em dados reais.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#" class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-semibold px-8 py-4 rounded-xl transition-all shadow-lg shadow-accent-500/20 hover:shadow-accent-500/30 text-lg">
+        <button onclick="openModal()" class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-semibold px-8 py-4 rounded-xl transition-all shadow-lg shadow-accent-500/20 hover:shadow-accent-500/30 text-lg cursor-pointer">
           <i data-lucide="calendar" class="w-5 h-5"></i>
           Solicitar Demonstração
-        </a>
-        <a href="#" class="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium px-8 py-4 rounded-xl transition-all text-lg">
+        </button>
+        <a href="mailto:contato@betafleet.com.br" class="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium px-8 py-4 rounded-xl transition-all text-lg">
           <i data-lucide="message-circle" class="w-5 h-5"></i>
           Falar com um Especialista
         </a>
@@ -1076,9 +1184,128 @@
   </footer>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- MODAL DE DEMONSTRAÇÃO -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <div id="demoModal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div id="formContainer">
+        <div class="text-center mb-6">
+          <div class="w-12 h-12 bg-accent-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="calendar" class="w-6 h-6 text-accent-600"></i>
+          </div>
+          <h3 class="text-xl font-bold text-zinc-900">Solicitar Demonstração</h3>
+          <p class="text-sm text-zinc-500 mt-1">Preencha seus dados e entraremos em contato.</p>
+        </div>
+
+        <form id="demoForm" action="https://formspree.io/f/xdavnekk" method="POST">
+          <div class="form-group">
+            <label class="form-label" for="nome">Nome</label>
+            <input class="form-input" type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="empresa">Empresa</label>
+            <input class="form-input" type="text" id="empresa" name="empresa" required placeholder="Nome da empresa">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">E-mail</label>
+            <input class="form-input" type="email" id="email" name="email" required placeholder="seu@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="telefone">Telefone</label>
+            <input class="form-input" type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="frota">Tamanho da Frota</label>
+            <select class="form-select" id="frota" name="frota">
+              <option value="">Selecione</option>
+              <option value="1-10">1 a 10 veículos</option>
+              <option value="11-50">11 a 50 veículos</option>
+              <option value="51-100">51 a 100 veículos</option>
+              <option value="100+">Mais de 100 veículos</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="mensagem">Mensagem <span class="text-zinc-400 font-normal">(opcional)</span></label>
+            <textarea class="form-textarea" id="mensagem" name="mensagem" placeholder="Conte um pouco sobre sua necessidade"></textarea>
+          </div>
+          <div class="form-error" id="formError"></div>
+          <button class="form-btn" type="submit" id="submitBtn">
+            Solicitar Demonstração
+          </button>
+        </form>
+      </div>
+
+      <div class="form-success" id="formSuccess">
+        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i data-lucide="check" class="w-8 h-8 text-green-600"></i>
+        </div>
+        <h3 class="text-xl font-bold text-zinc-900 mb-2">Recebemos sua solicitação!</h3>
+        <p class="text-sm text-zinc-500">Entraremos em contato em até 24 horas úteis para agendar sua demonstração personalizada.</p>
+        <button onclick="closeModal()" class="mt-6 text-sm font-semibold text-accent-500 hover:text-accent-600 transition-colors">
+          Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- SCRIPTS -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <script>
+    // Modal
+    function openModal() {
+      document.getElementById('demoModal').classList.add('open');
+      document.body.classList.add('modal-open');
+    }
+    function closeModal() {
+      document.getElementById('demoModal').classList.remove('open');
+      document.body.classList.remove('modal-open');
+    }
+
+    // Form submission
+    const demoForm = document.getElementById('demoForm');
+    const formContainer = document.getElementById('formContainer');
+    const formSuccess = document.getElementById('formSuccess');
+    const formError = document.getElementById('formError');
+    const submitBtn = document.getElementById('submitBtn');
+
+    demoForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      formError.classList.remove('show');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+
+      try {
+        const res = await fetch(demoForm.action, {
+          method: 'POST',
+          body: new FormData(demoForm),
+          headers: { 'Accept': 'application/json' },
+        });
+        if (res.ok) {
+          formContainer.style.display = 'none';
+          formSuccess.classList.add('show');
+          lucide.createIcons();
+        } else {
+          throw new Error('Erro ao enviar');
+        }
+      } catch {
+        formError.textContent = 'Ocorreu um erro ao enviar. Tente novamente ou envie um e-mail para contato@betafleet.com.br.';
+        formError.classList.add('show');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Solicitar Demonstração';
+      }
+    });
+
+    // Close modal on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
     // Initialize Lucide icons
     lucide.createIcons();
 
