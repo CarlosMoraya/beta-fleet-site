@@ -3,8 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BetaFleet - Gestão Inteligente de Frota</title>
-  <meta name="description" content="BetaFleet: plataforma de gestão de frota que centraliza dados operacionais, reduz custos e aumenta o ROI de cada veículo da sua operação." />
+  <title>BetaFleet — Software de Gestão de Frotas | Custos, Manutenção e Disponibilidade</title>
+  <meta name="description" content="O BetaFleet centraliza veículos, motoristas, manutenção e custos da frota em uma única plataforma. Indicadores claros para reduzir despesas e aumentar a disponibilidade da operação." />
+  <meta property="og:title" content="BetaFleet — Software de Gestão de Frotas" />
+  <meta property="og:description" content="Centralize veículos, motoristas, manutenção e custos da frota. Indicadores claros para decidir mais rápido e operar com mais disponibilidade." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <!-- Ao publicar no domínio definitivo, adicionar og:url e og:image com URLs absolutas. -->
+  <link rel="preload" as="image" href="assets/hero-fleet-poster.jpg" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,40 +47,118 @@
       },
     }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "BetaFleet",
+    "applicationCategory": "BusinessApplication",
+    "description": "Plataforma de gestão de frotas que centraliza veículos, motoristas, manutenção e custos, com indicadores operacionais e financeiros.",
+    "inLanguage": "pt-BR"
+  }
+  </script>
   <style>
     * { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
     html { scroll-behavior: smooth; }
+    body { text-rendering: optimizeLegibility; }
+
     .gradient-hero {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #1e3a5f 100%);
+      background: linear-gradient(160deg, #0f172a 0%, #1e293b 55%, #1e3a5f 100%);
     }
     .gradient-cta {
       background: linear-gradient(135deg, #1e293b 0%, #1e3a5f 50%, #0f172a 100%);
     }
     .card-hover {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
     .card-hover:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px -16px rgba(15, 23, 42, 0.16);
+      border-color: #e4e4e7;
     }
     .fade-in {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(16px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .kpi-pulse {
-      animation: pulse-soft 3s ease-in-out infinite;
-    }
-    @keyframes pulse-soft {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.85; }
-    }
     .mockup-shadow {
       box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255,255,255,0.05);
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ea580c;
+      margin-bottom: 1rem;
+    }
+    .eyebrow--dark { color: #fb923c; }
+
+    /* Foco visível consistente para navegação por teclado */
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid #f97316;
+      outline-offset: 2px;
+      border-radius: 0.375rem;
+    }
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 200;
+      background: #0f172a;
+      color: #fff;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0 0 0.75rem 0;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .skip-link:focus { left: 0; }
+
+    /* FAQ */
+    details.faq-item {
+      border: 1px solid #e4e4e7;
+      border-radius: 1rem;
+      background: #fff;
+    }
+    details.faq-item + details.faq-item { margin-top: 0.75rem; }
+    details.faq-item summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.125rem 1.375rem;
+      font-weight: 600;
+      color: #18181b;
+      font-size: 0.9875rem;
+    }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary::after {
+      content: '+';
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #a1a1aa;
+      line-height: 1;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    details.faq-item[open] summary::after { transform: rotate(45deg); }
+    details.faq-item .faq-body {
+      padding: 0 1.375rem 1.25rem;
+      font-size: 0.9375rem;
+      color: #52525b;
+      line-height: 1.65;
     }
 
     /* Modal */
@@ -184,172 +268,127 @@
     }
     .form-error.show { display: block; }
     body.modal-open { overflow: hidden; }
+
+    /* Acessibilidade: reduzir movimento */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade-in {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .card-hover,
+      .card-hover:hover {
+        transform: none;
+        transition: none;
+      }
+      .modal-overlay,
+      .modal-content {
+        transition: none;
+      }
+    }
   </style>
 </head>
 <body class="bg-white text-zinc-900 antialiased">
 
+  <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- NAVBAR -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-brand-950/95 backdrop-blur-md border-b border-white/5">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-brand-950/95 backdrop-blur-md border-b border-white/5" aria-label="Navegação principal">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
-        <div class="flex items-center gap-2">
+        <a href="#inicio" class="flex items-center gap-2" aria-label="BetaFleet — início">
           <span class="text-3xl sm:text-4xl font-bold tracking-tight text-white flex items-baseline">
             <span class="text-accent-500 drop-shadow-[0_0_8px_rgba(249,115,22,0.5)]">β</span>etaFleet
           </span>
-        </div>
-        <div class="hidden md:flex items-center gap-8">
-          <a href="#dores" class="text-sm text-zinc-300 hover:text-white transition-colors">Problemas</a>
+        </a>
+        <div class="hidden md:flex items-center gap-7">
+          <a href="#dores" class="text-sm text-zinc-300 hover:text-white transition-colors">Desafios</a>
           <a href="#solucao" class="text-sm text-zinc-300 hover:text-white transition-colors">Solução</a>
-          <a href="#roi" class="text-sm text-zinc-300 hover:text-white transition-colors">ROI</a>
           <a href="#funcionalidades" class="text-sm text-zinc-300 hover:text-white transition-colors">Funcionalidades</a>
-          <a href="#antes-depois" class="text-sm text-zinc-300 hover:text-white transition-colors">Comparativo</a>
+          <a href="#como-funciona" class="text-sm text-zinc-300 hover:text-white transition-colors">Como funciona</a>
+          <a href="#roi" class="text-sm text-zinc-300 hover:text-white transition-colors">Resultados</a>
+          <a href="#faq" class="text-sm text-zinc-300 hover:text-white transition-colors">FAQ</a>
           <button onclick="openModal('demo')" class="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-5 py-2 rounded-lg transition-colors cursor-pointer">
-            Solicitar Demonstração
+            Solicitar demonstração
           </button>
         </div>
-        <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+        <button id="mobile-menu-btn" class="md:hidden text-white p-2" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
           <i data-lucide="menu" class="w-6 h-6"></i>
         </button>
       </div>
     </div>
     <div id="mobile-menu" class="hidden md:hidden bg-brand-950 border-t border-white/5 px-4 pb-4">
       <div class="flex flex-col gap-3 pt-3">
-        <a href="#dores" class="text-sm text-zinc-300 hover:text-white py-2">Problemas</a>
+        <a href="#dores" class="text-sm text-zinc-300 hover:text-white py-2">Desafios</a>
         <a href="#solucao" class="text-sm text-zinc-300 hover:text-white py-2">Solução</a>
-        <a href="#roi" class="text-sm text-zinc-300 hover:text-white py-2">ROI</a>
         <a href="#funcionalidades" class="text-sm text-zinc-300 hover:text-white py-2">Funcionalidades</a>
-        <a href="#antes-depois" class="text-sm text-zinc-300 hover:text-white py-2">Comparativo</a>
+        <a href="#como-funciona" class="text-sm text-zinc-300 hover:text-white py-2">Como funciona</a>
+        <a href="#roi" class="text-sm text-zinc-300 hover:text-white py-2">Resultados</a>
+        <a href="#faq" class="text-sm text-zinc-300 hover:text-white py-2">FAQ</a>
         <button onclick="openModal('demo')" class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors mt-2 cursor-pointer">
-          Solicitar Demonstração
+          Solicitar demonstração
         </button>
       </div>
     </div>
   </nav>
 
+  <main id="conteudo">
+
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="gradient-hero pt-28 pb-20 lg:pt-36 lg:pb-28 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-5">
-      <div class="absolute top-20 left-10 w-72 h-72 bg-accent-500 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-10 right-10 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
-    </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div class="fade-in">
-          <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-6">
-            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-            <span class="text-xs font-medium text-zinc-300">Plataforma de Gestão de Frota</span>
-          </div>
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
-            Controle sua frota com dados, reduza custos operacionais e
-            <span class="text-accent-400">aumente o ROI</span> de cada veículo.
+  <section id="inicio" class="gradient-hero pt-28 pb-16 lg:pt-36 lg:pb-24 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        <div class="lg:col-span-6 fade-in">
+          <p class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-6 text-xs font-medium text-zinc-300">
+            Plataforma de gestão de frotas
+          </p>
+          <h1 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white leading-tight mb-6 tracking-tight">
+            Sua frota sob controle: custos, manutenção e disponibilidade em <span class="text-accent-400">uma única plataforma</span>.
           </h1>
           <p class="text-lg text-zinc-300 leading-relaxed mb-8 max-w-xl">
-            O BetaFleet centraliza informações da frota, acompanha indicadores críticos e ajuda gestores a tomar decisões rápidas para melhorar a eficiência operacional e o retorno financeiro.
+            O BetaFleet centraliza veículos, motoristas, manutenções e custos, e transforma essas informações em indicadores claros — para reduzir despesas, evitar paradas não planejadas e manter mais veículos disponíveis para operar.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
-            <button onclick="openModal('demo')" class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-all shadow-lg shadow-accent-500/20 hover:shadow-accent-500/30 cursor-pointer">
-              <i data-lucide="calendar" class="w-5 h-5"></i>
-              Solicitar Demonstração
+            <button onclick="openModal('demo')" class="inline-flex items-center justify-center bg-accent-500 hover:bg-accent-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-colors cursor-pointer">
+              Solicitar demonstração
             </button>
-            <a href="#solucao" class="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium px-7 py-3.5 rounded-xl transition-all">
-              <i data-lucide="play-circle" class="w-5 h-5"></i>
+            <a href="#como-funciona" class="inline-flex items-center justify-center bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium px-7 py-3.5 rounded-xl transition-colors">
               Ver como funciona
             </a>
           </div>
-          <div class="flex items-center gap-6 mt-10 pt-8 border-t border-white/10">
-            <div class="text-center">
-              <div class="text-2xl font-bold text-white">100%</div>
-              <div class="text-xs text-zinc-400 mt-1">Dados centralizados</div>
-            </div>
-            <div class="w-px h-10 bg-white/10"></div>
-            <div class="text-center">
-              <div class="text-2xl font-bold text-white">Tempo real</div>
-              <div class="text-xs text-zinc-400 mt-1">Indicadores atualizados</div>
-            </div>
-            <div class="w-px h-10 bg-white/10"></div>
-            <div class="text-center">
-              <div class="text-2xl font-bold text-white">ROI</div>
-              <div class="text-xs text-zinc-400 mt-1">Foco em resultado</div>
-            </div>
-          </div>
+          <p class="text-sm text-zinc-400 mt-6">
+            Demonstração personalizada para a sua operação, sem compromisso.
+          </p>
         </div>
 
-        <!-- Dashboard Mockup -->
-        <div class="fade-in lg:pl-8">
-          <div class="bg-zinc-900/80 backdrop-blur rounded-2xl border border-white/10 p-4 sm:p-6 mockup-shadow">
-            <div class="flex items-center gap-2 mb-4">
-              <div class="w-3 h-3 rounded-full bg-red-400/80"></div>
-              <div class="w-3 h-3 rounded-full bg-yellow-400/80"></div>
-              <div class="w-3 h-3 rounded-full bg-green-400/80"></div>
-              <span class="ml-3 text-xs text-zinc-500 font-medium">BetaFleet — Painel Operacional</span>
-            </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
-              <div class="bg-zinc-800/60 rounded-xl p-3 border border-white/5">
-                <div class="flex items-center gap-2 mb-2">
-                  <i data-lucide="truck" class="w-4 h-4 text-blue-400"></i>
-                  <span class="text-[11px] text-zinc-400">Frota Total</span>
-                </div>
-                <div class="text-xl font-bold text-white">142</div>
-                <div class="text-[10px] text-green-400 mt-1">+3 este mês</div>
-              </div>
-              <div class="bg-zinc-800/60 rounded-xl p-3 border border-white/5">
-                <div class="flex items-center gap-2 mb-2">
-                  <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
-                  <span class="text-[11px] text-zinc-400">Disponíveis</span>
-                </div>
-                <div class="text-xl font-bold text-white">128</div>
-                <div class="text-[10px] text-green-400 mt-1">90.1% da frota</div>
-              </div>
-              <div class="bg-zinc-800/60 rounded-xl p-3 border border-white/5">
-                <div class="flex items-center gap-2 mb-2">
-                  <i data-lucide="wrench" class="w-4 h-4 text-orange-400"></i>
-                  <span class="text-[11px] text-zinc-400">Em Manutenção</span>
-                </div>
-                <div class="text-xl font-bold text-white">14</div>
-                <div class="text-[10px] text-orange-400 mt-1">9.9% da frota</div>
-              </div>
-            </div>
-            <div class="bg-zinc-800/40 rounded-xl p-4 border border-white/5 mb-4">
-              <div class="flex items-center justify-between mb-3">
-                <span class="text-xs font-medium text-zinc-300">Custo de Manutenção — Últimos 6 meses</span>
-                <span class="text-[10px] text-green-400 font-medium">-12.4%</span>
-              </div>
-              <div class="flex items-end gap-2 h-20">
-                <div class="flex-1 bg-blue-500/30 rounded-t" style="height: 80%"></div>
-                <div class="flex-1 bg-blue-500/40 rounded-t" style="height: 65%"></div>
-                <div class="flex-1 bg-blue-500/50 rounded-t" style="height: 90%"></div>
-                <div class="flex-1 bg-blue-500/40 rounded-t" style="height: 55%"></div>
-                <div class="flex-1 bg-blue-500/60 rounded-t" style="height: 45%"></div>
-                <div class="flex-1 bg-accent-500/80 rounded-t" style="height: 35%"></div>
-              </div>
-              <div class="flex justify-between mt-2">
-                <span class="text-[9px] text-zinc-500">Jan</span>
-                <span class="text-[9px] text-zinc-500">Fev</span>
-                <span class="text-[9px] text-zinc-500">Mar</span>
-                <span class="text-[9px] text-zinc-500">Abr</span>
-                <span class="text-[9px] text-zinc-500">Mai</span>
-                <span class="text-[9px] text-zinc-500">Jun</span>
-              </div>
-            </div>
-            <div class="grid grid-cols-2 gap-3">
-              <div class="bg-zinc-800/40 rounded-xl p-3 border border-white/5">
-                <div class="flex items-center gap-2 mb-1">
-                  <i data-lucide="dollar-sign" class="w-3.5 h-3.5 text-green-400"></i>
-                  <span class="text-[10px] text-zinc-400">Economia no mês</span>
-                </div>
-                <div class="text-base font-bold text-green-400">R$ 47.200</div>
-              </div>
-              <div class="bg-zinc-800/40 rounded-xl p-3 border border-white/5">
-                <div class="flex items-center gap-2 mb-1">
-                  <i data-lucide="trending-up" class="w-3.5 h-3.5 text-accent-400"></i>
-                  <span class="text-[10px] text-zinc-400">Disponibilidade</span>
-                </div>
-                <div class="text-base font-bold text-white">90.1%</div>
-              </div>
+        <!-- Vídeo do Hero -->
+        <div class="lg:col-span-6 fade-in">
+          <div class="relative rounded-2xl overflow-hidden mockup-shadow border border-white/10">
+            <video
+              id="hero-video"
+              class="w-full aspect-video object-cover"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="assets/hero-fleet-poster.jpg"
+              aria-label="Vídeo de um caminhão de frota chegando a um centro logístico">
+              <source src="assets/hero-fleet.mp4" type="video/mp4" />
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-950/70 via-transparent to-transparent pointer-events-none" aria-hidden="true"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between gap-4">
+              <p class="text-sm text-zinc-200 font-medium max-w-xs">
+                Do pátio ao painel de indicadores: a operação inteira, visível.
+              </p>
+              <button id="hero-video-toggle" class="shrink-0 bg-white/10 hover:bg-white/20 border border-white/15 text-white rounded-full p-2 transition-colors cursor-pointer" aria-label="Pausar vídeo" aria-pressed="false">
+                <i data-lucide="pause" class="w-4 h-4" id="hero-video-toggle-icon"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -358,81 +397,78 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- SEÇÃO DE DORES -->
+  <!-- DESAFIOS OPERACIONAIS -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section id="dores" class="py-20 lg:py-28 bg-zinc-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
-        <span class="inline-flex items-center gap-2 text-sm font-semibold text-accent-500 uppercase tracking-wider mb-4">
-          <i data-lucide="alert-triangle" class="w-4 h-4"></i>
-          O problema
-        </span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4">
+      <div class="max-w-3xl mb-14 fade-in">
+        <p class="eyebrow">O problema</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4 tracking-tight">
           Sua frota está gerando lucro ou drenando margem?
         </h2>
         <p class="text-lg text-zinc-600 leading-relaxed">
-          Empresas que gerenciam frota sem uma plataforma adequada perdem dinheiro todos os dias — muitas vezes sem perceber. Os custos invisíveis se acumulam até comprometer a operação.
+          Sem uma plataforma adequada, os custos da frota se acumulam de forma silenciosa: planilhas desatualizadas, manutenções corretivas, veículos parados e decisões tomadas tarde demais.
         </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 fade-in">
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 card-hover shadow-sm">
-          <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="file-spreadsheet" class="w-6 h-6 text-red-500"></i>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 fade-in">
+        <div class="bg-white rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-zinc-100 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="file-spreadsheet" class="w-5 h-5 text-zinc-600"></i>
           </div>
-          <h3 class="text-lg font-semibold text-zinc-900 mb-2">Planilhas descentralizadas</h3>
+          <h3 class="text-base font-semibold text-zinc-900 mb-2">Informação espalhada em planilhas</h3>
           <p class="text-sm text-zinc-600 leading-relaxed">
-            Informações espalhadas em múltiplas planilhas, sem padronização. Dados desatualizados que geram decisões equivocadas e retrabalho operacional.
+            Dados dispersos e sem padronização geram retrabalho e decisões baseadas em números desatualizados.
           </p>
         </div>
 
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 card-hover shadow-sm">
-          <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="wrench" class="w-6 h-6 text-red-500"></i>
+        <div class="bg-white rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-zinc-100 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="wrench" class="w-5 h-5 text-zinc-600"></i>
           </div>
-          <h3 class="text-lg font-semibold text-zinc-900 mb-2">Manutenção sem controle preventivo</h3>
+          <h3 class="text-base font-semibold text-zinc-900 mb-2">Manutenção sempre corretiva</h3>
           <p class="text-sm text-zinc-600 leading-relaxed">
-            Sem acompanhamento preventivo, veículos quebram inesperadamente. O custo da manutenção corretiva é até 3x maior que a preventiva.
+            Sem acompanhamento preventivo, os veículos quebram em operação — e o conserto de emergência custa bem mais do que a prevenção.
           </p>
         </div>
 
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 card-hover shadow-sm">
-          <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="eye-off" class="w-6 h-6 text-red-500"></i>
+        <div class="bg-white rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-zinc-100 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="eye-off" class="w-5 h-5 text-zinc-600"></i>
           </div>
-          <h3 class="text-lg font-semibold text-zinc-900 mb-2">Baixa visibilidade da frota</h3>
+          <h3 class="text-base font-semibold text-zinc-900 mb-2">Baixa visibilidade da frota</h3>
           <p class="text-sm text-zinc-600 leading-relaxed">
-            Sem saber quais veículos estão disponíveis, em manutenção ou ociosos, é impossível otimizar a utilização dos ativos.
+            Sem saber o que está disponível, em manutenção ou ocioso, é impossível otimizar o uso dos ativos.
           </p>
         </div>
 
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 card-hover shadow-sm">
-          <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="clock" class="w-6 h-6 text-red-500"></i>
+        <div class="bg-white rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-zinc-100 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="clock" class="w-5 h-5 text-zinc-600"></i>
           </div>
-          <h3 class="text-lg font-semibold text-zinc-900 mb-2">Decisões tomadas tarde demais</h3>
+          <h3 class="text-base font-semibold text-zinc-900 mb-2">Decisões tomadas tarde demais</h3>
           <p class="text-sm text-zinc-600 leading-relaxed">
-            Quando o gestor percebe o problema, o custo já foi incorrido. Sem dados em tempo real, a operação trabalha sempre no modo reativo.
+            Quando o gestor percebe o problema, o custo já foi incorrido. A operação vive no modo reativo.
           </p>
         </div>
 
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 card-hover shadow-sm">
-          <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="trending-down" class="w-6 h-6 text-red-500"></i>
+        <div class="bg-white rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-zinc-100 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="trending-down" class="w-5 h-5 text-zinc-600"></i>
           </div>
-          <h3 class="text-lg font-semibold text-zinc-900 mb-2">Custos difíceis de rastrear</h3>
+          <h3 class="text-base font-semibold text-zinc-900 mb-2">Custos difíceis de rastrear</h3>
           <p class="text-sm text-zinc-600 leading-relaxed">
-            Sem centralização financeira, é impossível saber quanto cada veículo custa, onde a margem está sendo perdida e onde é possível economizar.
+            Sem centralização financeira, ninguém sabe quanto cada veículo custa nem onde a margem está sendo perdida.
           </p>
         </div>
 
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 card-hover shadow-sm">
-          <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="bar-chart-3" class="w-6 h-6 text-red-500"></i>
+        <div class="bg-white rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-zinc-100 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="bar-chart-3" class="w-5 h-5 text-zinc-600"></i>
           </div>
-          <h3 class="text-lg font-semibold text-zinc-900 mb-2">Falta de indicadores confiáveis</h3>
+          <h3 class="text-base font-semibold text-zinc-900 mb-2">Falta de indicadores confiáveis</h3>
           <p class="text-sm text-zinc-600 leading-relaxed">
-            Sem KPIs claros de disponibilidade, custo por veículo e produtividade, a gestão opera no escuro e não consegue justificar investimentos.
+            Sem KPIs de disponibilidade, custo por veículo e produtividade, fica difícil justificar investimentos.
           </p>
         </div>
       </div>
@@ -440,134 +476,120 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- SEÇÃO DE SOLUÇÃO -->
+  <!-- SOLUÇÃO -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section id="solucao" class="py-20 lg:py-28 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="grid lg:grid-cols-2 gap-14 lg:gap-16 items-center">
         <div class="fade-in">
-          <span class="inline-flex items-center gap-2 text-sm font-semibold text-accent-500 uppercase tracking-wider mb-4">
-            <i data-lucide="zap" class="w-4 h-4"></i>
-            A solução
-          </span>
-          <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-6">
-            Uma única plataforma para enxergar, controlar e melhorar a performance da sua frota.
+          <p class="eyebrow">A solução</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-6 tracking-tight">
+            Enxergue, controle e melhore a performance da frota em um só lugar.
           </h2>
           <p class="text-lg text-zinc-600 leading-relaxed mb-8">
-            O BetaFleet centraliza a gestão da frota, transforma dados operacionais em indicadores claros e ajuda gestores a reduzir custos, aumentar disponibilidade e melhorar o retorno sobre cada veículo da operação.
+            O BetaFleet reúne toda a gestão da frota em uma única plataforma e transforma os dados da operação em indicadores que orientam decisões — do dia a dia da manutenção ao planejamento financeiro.
           </p>
-          <div class="space-y-4">
+          <div class="space-y-5">
             <div class="flex items-start gap-4">
-              <div class="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
-                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+              <div class="w-8 h-8 bg-brand-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-brand-700"></i>
               </div>
               <div>
-                <h4 class="font-semibold text-zinc-900">Visão completa da operação</h4>
+                <h3 class="font-semibold text-zinc-900">Visão completa da operação</h3>
                 <p class="text-sm text-zinc-600 mt-1">Veículos, motoristas, manutenção, custos e disponibilidade em um único lugar.</p>
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
-                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+              <div class="w-8 h-8 bg-brand-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-brand-700"></i>
               </div>
               <div>
-                <h4 class="font-semibold text-zinc-900">Indicadores que orientam decisões</h4>
-                <p class="text-sm text-zinc-600 mt-1">KPIs operacionais e financeiros atualizados para agir antes que os problemas se tornem custos.</p>
+                <h3 class="font-semibold text-zinc-900">Indicadores que orientam decisões</h3>
+                <p class="text-sm text-zinc-600 mt-1">KPIs operacionais e financeiros atualizados para agir antes que problemas virem custo.</p>
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
-                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+              <div class="w-8 h-8 bg-brand-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-brand-700"></i>
               </div>
               <div>
-                <h4 class="font-semibold text-zinc-900">Gestão preventiva, não reativa</h4>
+                <h3 class="font-semibold text-zinc-900">Gestão preventiva, não reativa</h3>
                 <p class="text-sm text-zinc-600 mt-1">Antecipe manutenções, controle checklists e evite paradas não planejadas.</p>
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
-                <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+              <div class="w-8 h-8 bg-brand-50 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-brand-700"></i>
               </div>
               <div>
-                <h4 class="font-semibold text-zinc-900">Controle financeiro por veículo</h4>
-                <p class="text-sm text-zinc-600 mt-1">Saiba exatamente quanto cada veículo custa e onde sua margem está sendo comprometida.</p>
+                <h3 class="font-semibold text-zinc-900">Controle financeiro por veículo</h3>
+                <p class="text-sm text-zinc-600 mt-1">Saiba quanto cada veículo custa e onde a margem está sendo comprometida.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Visual da solução -->
+        <!-- Painel ilustrativo da plataforma -->
         <div class="fade-in">
           <div class="bg-gradient-to-br from-brand-950 to-brand-800 rounded-2xl p-6 sm:p-8 mockup-shadow">
             <div class="grid grid-cols-2 gap-4 mb-6">
               <div class="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/5">
                 <div class="flex items-center gap-2 mb-3">
-                  <i data-lucide="truck" class="w-5 h-5 text-blue-300"></i>
+                  <i data-lucide="truck" class="w-5 h-5 text-brand-300"></i>
                   <span class="text-xs font-medium text-zinc-300">Veículos</span>
                 </div>
                 <div class="text-2xl font-bold text-white">142</div>
-                <div class="flex items-center gap-1 mt-1">
-                  <i data-lucide="arrow-up-right" class="w-3 h-3 text-green-400"></i>
-                  <span class="text-[11px] text-green-400">+3 este mês</span>
-                </div>
+                <div class="text-[11px] text-zinc-400 mt-1">+3 este mês</div>
               </div>
               <div class="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/5">
                 <div class="flex items-center gap-2 mb-3">
-                  <i data-lucide="users" class="w-5 h-5 text-purple-300"></i>
+                  <i data-lucide="users" class="w-5 h-5 text-brand-300"></i>
                   <span class="text-xs font-medium text-zinc-300">Motoristas</span>
                 </div>
                 <div class="text-2xl font-bold text-white">87</div>
-                <div class="flex items-center gap-1 mt-1">
-                  <i data-lucide="arrow-up-right" class="w-3 h-3 text-green-400"></i>
-                  <span class="text-[11px] text-green-400">Ativos</span>
-                </div>
+                <div class="text-[11px] text-zinc-400 mt-1">Ativos</div>
               </div>
               <div class="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/5">
                 <div class="flex items-center gap-2 mb-3">
-                  <i data-lucide="clipboard-check" class="w-5 h-5 text-green-300"></i>
+                  <i data-lucide="clipboard-check" class="w-5 h-5 text-brand-300"></i>
                   <span class="text-xs font-medium text-zinc-300">Checklists</span>
                 </div>
                 <div class="text-2xl font-bold text-white">98%</div>
-                <div class="flex items-center gap-1 mt-1">
-                  <i data-lucide="arrow-up-right" class="w-3 h-3 text-green-400"></i>
-                  <span class="text-[11px] text-green-400">Concluídos</span>
-                </div>
+                <div class="text-[11px] text-zinc-400 mt-1">Concluídos</div>
               </div>
               <div class="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/5">
                 <div class="flex items-center gap-2 mb-3">
-                  <i data-lucide="shield-check" class="w-5 h-5 text-accent-300"></i>
+                  <i data-lucide="shield-check" class="w-5 h-5 text-accent-400"></i>
                   <span class="text-xs font-medium text-zinc-300">Disponibilidade</span>
                 </div>
-                <div class="text-2xl font-bold text-white">90.1%</div>
-                <div class="flex items-center gap-1 mt-1">
-                  <i data-lucide="arrow-up-right" class="w-3 h-3 text-green-400"></i>
-                  <span class="text-[11px] text-green-400">+2.3% vs mês anterior</span>
-                </div>
+                <div class="text-2xl font-bold text-white">90,1%</div>
+                <div class="text-[11px] text-zinc-400 mt-1">da frota</div>
               </div>
             </div>
             <div class="bg-white/5 rounded-xl p-4 border border-white/5">
               <div class="flex items-center justify-between mb-3">
-                <span class="text-xs font-medium text-zinc-300">Alertas Ativos</span>
+                <span class="text-xs font-medium text-zinc-300">Alertas ativos</span>
                 <span class="text-[10px] bg-accent-500/20 text-accent-400 px-2 py-0.5 rounded-full font-medium">3 pendências</span>
               </div>
               <div class="space-y-2">
                 <div class="flex items-center gap-3 bg-white/5 rounded-lg p-2.5">
-                  <div class="w-2 h-2 bg-orange-400 rounded-full"></div>
-                  <span class="text-xs text-zinc-300 flex-1">Veículo TRK-4821 — Manutenção preventiva pendente</span>
+                  <div class="w-2 h-2 bg-orange-400 rounded-full" aria-hidden="true"></div>
+                  <span class="text-xs text-zinc-300 flex-1">Veículo TRK-4821 — manutenção preventiva pendente</span>
                   <span class="text-[10px] text-zinc-500">Hoje</span>
                 </div>
                 <div class="flex items-center gap-3 bg-white/5 rounded-lg p-2.5">
-                  <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                  <div class="w-2 h-2 bg-yellow-400 rounded-full" aria-hidden="true"></div>
                   <span class="text-xs text-zinc-300 flex-1">Orçamento #1247 aguardando aprovação</span>
                   <span class="text-[10px] text-zinc-500">Ontem</span>
                 </div>
                 <div class="flex items-center gap-3 bg-white/5 rounded-lg p-2.5">
-                  <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <div class="w-2 h-2 bg-blue-400 rounded-full" aria-hidden="true"></div>
                   <span class="text-xs text-zinc-300 flex-1">Checklist de segurança vencido — 2 veículos</span>
                   <span class="text-[10px] text-zinc-500">2 dias</span>
                 </div>
               </div>
             </div>
+            <p class="text-[11px] text-zinc-500 mt-4 text-center">Ilustração da plataforma com dados de exemplo.</p>
           </div>
         </div>
       </div>
@@ -575,234 +597,170 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- SEÇÃO DE ROI -->
+  <!-- COMO FUNCIONA -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section id="roi" class="py-20 lg:py-28 bg-zinc-50">
+  <section id="como-funciona" class="py-20 lg:py-28 bg-zinc-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
-        <span class="inline-flex items-center gap-2 text-sm font-semibold text-accent-500 uppercase tracking-wider mb-4">
-          <i data-lucide="trending-up" class="w-4 h-4"></i>
-          Retorno sobre investimento
-        </span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4">
-          Cada veículo da sua frota pode gerar mais retorno.
+      <div class="max-w-3xl mb-14 fade-in">
+        <p class="eyebrow">Como funciona</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4 tracking-tight">
+          Da planilha ao painel de gestão, em quatro passos.
         </h2>
         <p class="text-lg text-zinc-600 leading-relaxed">
-          O BetaFleet transforma dados operacionais em economia real. Veja como a plataforma gera retorno financeiro mensurável para a sua operação.
+          O BetaFleet organiza a operação em uma sequência simples: centralizar, padronizar, acompanhar e decidir.
         </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 fade-in">
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 card-hover shadow-sm">
-          <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="piggy-bank" class="w-6 h-6 text-green-600"></i>
-          </div>
-          <h3 class="text-lg font-semibold text-zinc-900 mb-2">Redução de custos invisíveis</h3>
+      <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 fade-in">
+        <li class="bg-white rounded-2xl p-6 border border-zinc-200/70">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-brand-950 text-white text-sm font-bold mb-4">1</span>
+          <h3 class="text-base font-semibold text-zinc-900 mb-2">Centralize as informações</h3>
           <p class="text-sm text-zinc-600 leading-relaxed">
-            Identifique gastos recorrentes que passam despercebidos: manutenções repetitivas, veículos com custo desproporcional e desperdícios operacionais.
+            Cadastre veículos, motoristas, documentos e histórico em uma base única e organizada.
           </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 card-hover shadow-sm">
-          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="truck" class="w-6 h-6 text-blue-600"></i>
-          </div>
-          <h3 class="text-lg font-semibold text-zinc-900 mb-2">Mais disponibilidade da frota</h3>
+        </li>
+        <li class="bg-white rounded-2xl p-6 border border-zinc-200/70">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-brand-950 text-white text-sm font-bold mb-4">2</span>
+          <h3 class="text-base font-semibold text-zinc-900 mb-2">Padronize a rotina</h3>
           <p class="text-sm text-zinc-600 leading-relaxed">
-            Com manutenção preventiva e acompanhamento contínuo, mais veículos ficam disponíveis para a operação, aumentando a capacidade produtiva.
+            Checklists digitais, agendamentos e ordens de serviço substituem controles manuais dispersos.
           </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 card-hover shadow-sm">
-          <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="zap" class="w-6 h-6 text-purple-600"></i>
-          </div>
-          <h3 class="text-lg font-semibold text-zinc-900 mb-2">Decisões mais rápidas</h3>
+        </li>
+        <li class="bg-white rounded-2xl p-6 border border-zinc-200/70">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-brand-950 text-white text-sm font-bold mb-4">3</span>
+          <h3 class="text-base font-semibold text-zinc-900 mb-2">Acompanhe indicadores</h3>
           <p class="text-sm text-zinc-600 leading-relaxed">
-            Indicadores em tempo real permitem agir antes que problemas se tornem custos. Menos tempo analisando planilhas, mais tempo decidindo com dados.
+            Disponibilidade, custos e pendências em painéis atualizados, com alertas do que exige atenção.
           </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 card-hover shadow-sm">
-          <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="repeat" class="w-6 h-6 text-orange-600"></i>
-          </div>
-          <h3 class="text-lg font-semibold text-zinc-900 mb-2">Menos retrabalho operacional</h3>
+        </li>
+        <li class="bg-white rounded-2xl p-6 border border-zinc-200/70">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-brand-950 text-white text-sm font-bold mb-4">4</span>
+          <h3 class="text-base font-semibold text-zinc-900 mb-2">Decida com dados</h3>
           <p class="text-sm text-zinc-600 leading-relaxed">
-            Processos padronizados, checklists digitais e histórico completo eliminam o retrabalho de buscar informações e corrigir erros de comunicação.
+            Compare veículos, aprove orçamentos e aja antes que um problema operacional vire custo.
           </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 card-hover shadow-sm">
-          <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="shield-check" class="w-6 h-6 text-teal-600"></i>
-          </div>
-          <h3 class="text-lg font-semibold text-zinc-900 mb-2">Maior controle sobre manutenção</h3>
-          <p class="text-sm text-zinc-600 leading-relaxed">
-            Acompanhe cada ordem de serviço, aprove orçamentos e saiba exatamente quanto está investindo em manutenção preventiva vs. corretiva.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 card-hover shadow-sm">
-          <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="bar-chart-3" class="w-6 h-6 text-indigo-600"></i>
-          </div>
-          <h3 class="text-lg font-semibold text-zinc-900 mb-2">Mais retorno por veículo</h3>
-          <p class="text-sm text-zinc-600 leading-relaxed">
-            Com visão individual de custo e performance por veículo, é possível identificar quais ativos geram mais valor e quais precisam de atenção.
-          </p>
-        </div>
-      </div>
-
-      <!-- ROI Highlight Card -->
-      <div class="bg-gradient-to-r from-brand-950 to-brand-800 rounded-2xl p-8 sm:p-10 fade-in">
-        <div class="grid md:grid-cols-3 gap-8 items-center">
-          <div class="md:col-span-2">
-            <h3 class="text-2xl font-bold text-white mb-3">
-              Transforme dados da frota em decisões financeiras melhores.
-            </h3>
-            <p class="text-zinc-300 leading-relaxed">
-              Empresas que centralizam a gestão de frota conseguem identificar desperdícios antes que eles comprometam a margem. O BetaFleet organiza toda a operação em uma visão clara, orientada a resultados financeiros.
-            </p>
-          </div>
-          <div class="flex flex-col gap-4">
-            <div class="bg-white/10 rounded-xl p-4 border border-white/10 text-center">
-              <div class="text-3xl font-bold text-accent-400 mb-1">Menos</div>
-              <div class="text-sm text-zinc-300">veículos parados</div>
-            </div>
-            <div class="bg-white/10 rounded-xl p-4 border border-white/10 text-center">
-              <div class="text-3xl font-bold text-green-400 mb-1">Mais</div>
-              <div class="text-sm text-zinc-300">previsibilidade operacional</div>
-            </div>
-          </div>
-        </div>
-      </div>
+        </li>
+      </ol>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- SEÇÃO DE FUNCIONALIDADES -->
+  <!-- FUNCIONALIDADES -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <section id="funcionalidades" class="py-20 lg:py-28 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
-        <span class="inline-flex items-center gap-2 text-sm font-semibold text-accent-500 uppercase tracking-wider mb-4">
-          <i data-lucide="layers" class="w-4 h-4"></i>
-          Funcionalidades
-        </span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4">
-          Tudo que sua operação precisa em uma única plataforma.
+      <div class="max-w-3xl mb-14 fade-in">
+        <p class="eyebrow">Funcionalidades</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4 tracking-tight">
+          Módulos integrados que cobrem toda a gestão da frota.
         </h2>
         <p class="text-lg text-zinc-600 leading-relaxed">
-          Módulos integrados que cobrem toda a gestão da frota — do cadastro de veículos ao acompanhamento financeiro.
+          Do cadastro de veículos ao acompanhamento financeiro, tudo funciona de forma conectada.
         </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-in">
-        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-100 card-hover">
-          <div class="w-11 h-11 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="truck" class="w-5 h-5 text-blue-700"></i>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 fade-in">
+        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="truck" class="w-5 h-5 text-brand-700"></i>
           </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">Cadastro de Veículos</h3>
-          <p class="text-sm text-zinc-600">Controle completo da frota com dados, documentos, histórico e status de cada veículo.</p>
+          <h3 class="font-semibold text-zinc-900 mb-2">Cadastro de veículos</h3>
+          <p class="text-sm text-zinc-600">Dados, documentos, histórico e status de cada veículo da frota.</p>
         </div>
 
-        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-100 card-hover">
-          <div class="w-11 h-11 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="users" class="w-5 h-5 text-purple-700"></i>
+        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="users" class="w-5 h-5 text-brand-700"></i>
           </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">Gestão de Motoristas</h3>
-          <p class="text-sm text-zinc-600">Cadastro, CNH, vinculação com veículos e acompanhamento individual dos condutores.</p>
+          <h3 class="font-semibold text-zinc-900 mb-2">Gestão de motoristas</h3>
+          <p class="text-sm text-zinc-600">Cadastro, CNH, vinculação com veículos e acompanhamento individual.</p>
         </div>
 
-        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-100 card-hover">
-          <div class="w-11 h-11 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="wrench" class="w-5 h-5 text-orange-700"></i>
+        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="wrench" class="w-5 h-5 text-brand-700"></i>
           </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">Controle de Manutenção</h3>
-          <p class="text-sm text-zinc-600">Ordens de serviço, aprovação de orçamentos, histórico e acompanhamento de custos.</p>
+          <h3 class="font-semibold text-zinc-900 mb-2">Controle de manutenção</h3>
+          <p class="text-sm text-zinc-600">Ordens de serviço, orçamentos, histórico e acompanhamento de custos.</p>
         </div>
 
-        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-100 card-hover">
-          <div class="w-11 h-11 bg-green-100 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="clipboard-check" class="w-5 h-5 text-green-700"></i>
+        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="clipboard-check" class="w-5 h-5 text-brand-700"></i>
           </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">Checklists Digitais</h3>
-          <p class="text-sm text-zinc-600">Inspeções de rotina e segurança com templates personalizáveis e registro fotográfico.</p>
+          <h3 class="font-semibold text-zinc-900 mb-2">Checklists digitais</h3>
+          <p class="text-sm text-zinc-600">Inspeções de rotina e segurança com templates personalizáveis e fotos.</p>
         </div>
 
-        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-100 card-hover">
-          <div class="w-11 h-11 bg-teal-100 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="layout-dashboard" class="w-5 h-5 text-teal-700"></i>
+        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="layout-dashboard" class="w-5 h-5 text-brand-700"></i>
           </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">Dashboard de Indicadores</h3>
-          <p class="text-sm text-zinc-600">Painéis operacional e financeiro com KPIs de disponibilidade, custo e performance.</p>
+          <h3 class="font-semibold text-zinc-900 mb-2">Dashboard de indicadores</h3>
+          <p class="text-sm text-zinc-600">Painéis operacional e financeiro com KPIs de disponibilidade e custo.</p>
         </div>
 
-        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-100 card-hover">
-          <div class="w-11 h-11 bg-red-100 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="calendar-clock" class="w-5 h-5 text-red-700"></i>
+        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="calendar-clock" class="w-5 h-5 text-brand-700"></i>
           </div>
           <h3 class="font-semibold text-zinc-900 mb-2">Agendamentos</h3>
-          <p class="text-sm text-zinc-600">Agendamento de serviços, manutenções e inspeções com controle de datas e prazos.</p>
+          <p class="text-sm text-zinc-600">Serviços, manutenções e inspeções com controle de datas e prazos.</p>
         </div>
 
-        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-100 card-hover">
-          <div class="w-11 h-11 bg-indigo-100 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="clipboard-list" class="w-5 h-5 text-indigo-700"></i>
+        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="clipboard-list" class="w-5 h-5 text-brand-700"></i>
           </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">Planos de Ação</h3>
-          <p class="text-sm text-zinc-600">Criação e acompanhamento de ações corretivas para resolver problemas identificados.</p>
+          <h3 class="font-semibold text-zinc-900 mb-2">Planos de ação</h3>
+          <p class="text-sm text-zinc-600">Criação e acompanhamento de ações corretivas para problemas identificados.</p>
         </div>
 
-        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-100 card-hover">
-          <div class="w-11 h-11 bg-yellow-100 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="badge-check" class="w-5 h-5 text-yellow-700"></i>
+        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="badge-check" class="w-5 h-5 text-brand-700"></i>
           </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">Aprovação de Orçamentos</h3>
-          <p class="text-sm text-zinc-600">Fluxo de aprovação de custos de manutenção com controle hierárquico e transparência.</p>
+          <h3 class="font-semibold text-zinc-900 mb-2">Aprovação de orçamentos</h3>
+          <p class="text-sm text-zinc-600">Fluxo de aprovação de custos de manutenção com controle hierárquico.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- SEÇÃO DE DASHBOARD E INTELIGÊNCIA OPERACIONAL -->
+  <!-- PRÉVIA DA PLATAFORMA -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-20 lg:py-28 bg-zinc-50">
+  <section id="plataforma" class="py-20 lg:py-28 bg-zinc-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
-        <span class="inline-flex items-center gap-2 text-sm font-semibold text-accent-500 uppercase tracking-wider mb-4">
-          <i data-lucide="activity" class="w-4 h-4"></i>
-          Inteligência operacional
-        </span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4">
+      <div class="max-w-3xl mb-14 fade-in">
+        <p class="eyebrow">A plataforma</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4 tracking-tight">
           Dados que viram decisão. Indicadores que geram resultado.
         </h2>
         <p class="text-lg text-zinc-600 leading-relaxed">
-          O BetaFleet não é apenas um cadastro de veículos. É uma ferramenta de gestão que transforma dados brutos em insights acionáveis para a operação.
+          O BetaFleet não é apenas um cadastro de veículos: é uma ferramenta de gestão que organiza a operação em painéis claros, para o gestor agir no que importa.
         </p>
       </div>
 
-      <div class="grid lg:grid-cols-3 gap-6 fade-in">
+      <div class="grid lg:grid-cols-3 gap-5 fade-in">
         <!-- Painel Operacional -->
-        <div class="lg:col-span-2 bg-white rounded-2xl border border-zinc-100 p-6 shadow-sm">
+        <div class="lg:col-span-2 bg-white rounded-2xl border border-zinc-200/70 p-6 shadow-sm">
           <div class="flex items-center justify-between mb-6">
             <div class="flex items-center gap-3">
-              <div class="w-9 h-9 bg-blue-50 rounded-lg flex items-center justify-center">
-                <i data-lucide="layout-dashboard" class="w-5 h-5 text-blue-600"></i>
+              <div class="w-9 h-9 bg-brand-50 rounded-lg flex items-center justify-center">
+                <i data-lucide="layout-dashboard" class="w-5 h-5 text-brand-700"></i>
               </div>
               <div>
-                <h3 class="font-semibold text-zinc-900">Painel Operacional</h3>
-                <p class="text-xs text-zinc-500">Visão geral da frota em tempo real</p>
+                <h3 class="font-semibold text-zinc-900">Painel operacional</h3>
+                <p class="text-xs text-zinc-500">Visão geral da frota</p>
               </div>
             </div>
-            <span class="text-xs text-zinc-400 bg-zinc-100 px-3 py-1 rounded-full">Atualizado agora</span>
+            <span class="text-[10px] text-zinc-400 bg-zinc-100 px-3 py-1 rounded-full">Dados de exemplo</span>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
             <div class="bg-zinc-50 rounded-xl p-4 text-center">
               <div class="text-2xl font-bold text-zinc-900">142</div>
-              <div class="text-xs text-zinc-500 mt-1">Frota Total</div>
+              <div class="text-xs text-zinc-500 mt-1">Frota total</div>
             </div>
             <div class="bg-zinc-50 rounded-xl p-4 text-center">
               <div class="text-2xl font-bold text-green-600">128</div>
@@ -810,34 +768,34 @@
             </div>
             <div class="bg-zinc-50 rounded-xl p-4 text-center">
               <div class="text-2xl font-bold text-orange-600">14</div>
-              <div class="text-xs text-zinc-500 mt-1">Em Manutenção</div>
+              <div class="text-xs text-zinc-500 mt-1">Em manutenção</div>
             </div>
             <div class="bg-zinc-50 rounded-xl p-4 text-center">
-              <div class="text-2xl font-bold text-blue-600">87</div>
+              <div class="text-2xl font-bold text-brand-700">87</div>
               <div class="text-xs text-zinc-500 mt-1">Motoristas</div>
             </div>
           </div>
           <div class="bg-zinc-50 rounded-xl p-4">
             <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-medium text-zinc-700">Status da Frota</span>
+              <span class="text-xs font-medium text-zinc-700">Status da frota</span>
               <span class="text-xs text-zinc-400">Distribuição atual</span>
             </div>
-            <div class="flex gap-1 h-6 rounded-full overflow-hidden">
+            <div class="flex gap-1 h-5 rounded-full overflow-hidden" role="img" aria-label="Distribuição da frota: 90% disponível, 7% em manutenção, 3% indisponível">
               <div class="bg-green-500 rounded-l-full" style="width: 90%"></div>
               <div class="bg-orange-500" style="width: 7%"></div>
               <div class="bg-red-500 rounded-r-full" style="width: 3%"></div>
             </div>
-            <div class="flex items-center gap-6 mt-3">
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-3">
               <div class="flex items-center gap-2">
-                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                <div class="w-3 h-3 bg-green-500 rounded-full" aria-hidden="true"></div>
                 <span class="text-xs text-zinc-600">Disponível (90%)</span>
               </div>
               <div class="flex items-center gap-2">
-                <div class="w-3 h-3 bg-orange-500 rounded-full"></div>
+                <div class="w-3 h-3 bg-orange-500 rounded-full" aria-hidden="true"></div>
                 <span class="text-xs text-zinc-600">Manutenção (7%)</span>
               </div>
               <div class="flex items-center gap-2">
-                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                <div class="w-3 h-3 bg-red-500 rounded-full" aria-hidden="true"></div>
                 <span class="text-xs text-zinc-600">Indisponível (3%)</span>
               </div>
             </div>
@@ -845,35 +803,27 @@
         </div>
 
         <!-- Painel Financeiro -->
-        <div class="bg-white rounded-2xl border border-zinc-100 p-6 shadow-sm">
+        <div class="bg-white rounded-2xl border border-zinc-200/70 p-6 shadow-sm">
           <div class="flex items-center gap-3 mb-6">
-            <div class="w-9 h-9 bg-green-50 rounded-lg flex items-center justify-center">
-              <i data-lucide="dollar-sign" class="w-5 h-5 text-green-600"></i>
+            <div class="w-9 h-9 bg-brand-50 rounded-lg flex items-center justify-center">
+              <i data-lucide="dollar-sign" class="w-5 h-5 text-brand-700"></i>
             </div>
             <div>
-              <h3 class="font-semibold text-zinc-900">Painel de Custos</h3>
+              <h3 class="font-semibold text-zinc-900">Painel de custos</h3>
               <p class="text-xs text-zinc-500">Controle financeiro da frota</p>
             </div>
           </div>
           <div class="space-y-4">
             <div class="bg-zinc-50 rounded-xl p-4">
-              <div class="text-xs text-zinc-500 mb-1">Custo Total — Mês</div>
+              <div class="text-xs text-zinc-500 mb-1">Custo total — mês</div>
               <div class="text-xl font-bold text-zinc-900">R$ 284.500</div>
-              <div class="flex items-center gap-1 mt-1">
-                <i data-lucide="arrow-down-right" class="w-3 h-3 text-green-500"></i>
-                <span class="text-xs text-green-600 font-medium">-12.4% vs mês anterior</span>
-              </div>
             </div>
             <div class="bg-zinc-50 rounded-xl p-4">
-              <div class="text-xs text-zinc-500 mb-1">Custo Médio por Veículo</div>
+              <div class="text-xs text-zinc-500 mb-1">Custo médio por veículo</div>
               <div class="text-xl font-bold text-zinc-900">R$ 2.003</div>
-              <div class="flex items-center gap-1 mt-1">
-                <i data-lucide="arrow-down-right" class="w-3 h-3 text-green-500"></i>
-                <span class="text-xs text-green-600 font-medium">-8.2% vs mês anterior</span>
-              </div>
             </div>
             <div class="bg-zinc-50 rounded-xl p-4">
-              <div class="text-xs text-zinc-500 mb-1">Preventiva vs Corretiva</div>
+              <div class="text-xs text-zinc-500 mb-1">Preventiva vs. corretiva</div>
               <div class="flex items-center gap-2 mt-2">
                 <div class="flex-1 h-3 bg-zinc-200 rounded-full overflow-hidden">
                   <div class="h-full bg-green-500 rounded-full" style="width: 72%"></div>
@@ -883,110 +833,215 @@
               <div class="text-[10px] text-zinc-500 mt-1">Preventiva</div>
             </div>
             <div class="bg-zinc-50 rounded-xl p-4">
-              <div class="text-xs text-zinc-500 mb-1">Orçamentos Pendentes</div>
+              <div class="text-xs text-zinc-500 mb-1">Orçamentos pendentes</div>
               <div class="text-xl font-bold text-orange-600">7</div>
               <div class="text-[10px] text-zinc-500 mt-1">Aguardando aprovação</div>
             </div>
           </div>
         </div>
       </div>
+      <p class="text-xs text-zinc-400 mt-5 text-center fade-in">Painéis ilustrativos com dados de exemplo, baseados nos módulos reais da plataforma.</p>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- SEÇÃO ANTES E DEPOIS -->
+  <!-- RESULTADOS / ROI -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section id="antes-depois" class="py-20 lg:py-28 bg-white">
+  <section id="roi" class="py-20 lg:py-28 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
-        <span class="inline-flex items-center gap-2 text-sm font-semibold text-accent-500 uppercase tracking-wider mb-4">
-          <i data-lucide="git-compare" class="w-4 h-4"></i>
-          Comparativo
-        </span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4">
-          Gestão tradicional vs. gestão com BetaFleet
+      <div class="max-w-3xl mb-14 fade-in">
+        <p class="eyebrow">Resultados para o negócio</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4 tracking-tight">
+          Onde o BetaFleet gera retorno para a operação.
         </h2>
         <p class="text-lg text-zinc-600 leading-relaxed">
-          Veja como a plataforma transforma a forma como sua empresa gerencia a frota.
+          O retorno vem de decisões melhores: identificar desperdícios antes que comprometam a margem, manter veículos rodando e reduzir o trabalho manual da gestão.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8 fade-in">
-        <!-- Antes -->
-        <div class="bg-zinc-50 rounded-2xl p-8 border border-zinc-200">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center">
-              <i data-lucide="x" class="w-5 h-5 text-red-600"></i>
-            </div>
-            <h3 class="text-xl font-bold text-zinc-900">Sem BetaFleet</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12 fade-in">
+        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="piggy-bank" class="w-5 h-5 text-brand-700"></i>
           </div>
+          <h3 class="text-base font-semibold text-zinc-900 mb-2">Custos invisíveis expostos</h3>
+          <p class="text-sm text-zinc-600 leading-relaxed">
+            Ajuda a identificar gastos recorrentes que passam despercebidos: manutenções repetitivas e veículos com custo desproporcional.
+          </p>
+        </div>
+
+        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="truck" class="w-5 h-5 text-brand-700"></i>
+          </div>
+          <h3 class="text-base font-semibold text-zinc-900 mb-2">Mais disponibilidade da frota</h3>
+          <p class="text-sm text-zinc-600 leading-relaxed">
+            Manutenção preventiva e acompanhamento contínuo contribuem para manter mais veículos disponíveis para operar.
+          </p>
+        </div>
+
+        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="zap" class="w-5 h-5 text-brand-700"></i>
+          </div>
+          <h3 class="text-base font-semibold text-zinc-900 mb-2">Decisões mais rápidas</h3>
+          <p class="text-sm text-zinc-600 leading-relaxed">
+            Indicadores atualizados permitem agir antes que problemas virem custo — menos tempo em planilhas, mais tempo decidindo.
+          </p>
+        </div>
+
+        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="repeat" class="w-5 h-5 text-brand-700"></i>
+          </div>
+          <h3 class="text-base font-semibold text-zinc-900 mb-2">Menos retrabalho operacional</h3>
+          <p class="text-sm text-zinc-600 leading-relaxed">
+            Processos padronizados, checklists digitais e histórico completo reduzem o trabalho manual de buscar e conferir informações.
+          </p>
+        </div>
+
+        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="shield-check" class="w-5 h-5 text-brand-700"></i>
+          </div>
+          <h3 class="text-base font-semibold text-zinc-900 mb-2">Controle sobre manutenção</h3>
+          <p class="text-sm text-zinc-600 leading-relaxed">
+            Acompanhe cada ordem de serviço, aprove orçamentos e saiba quanto vai para manutenção preventiva vs. corretiva.
+          </p>
+        </div>
+
+        <div class="bg-zinc-50 rounded-2xl p-6 border border-zinc-200/70 card-hover">
+          <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="bar-chart-3" class="w-5 h-5 text-brand-700"></i>
+          </div>
+          <h3 class="text-base font-semibold text-zinc-900 mb-2">Visão de retorno por veículo</h3>
+          <p class="text-sm text-zinc-600 leading-relaxed">
+            Com custo e performance por veículo, fica claro quais ativos geram valor e quais precisam de atenção.
+          </p>
+        </div>
+      </div>
+
+      <!-- Perguntas de gestão -->
+      <div class="bg-gradient-to-r from-brand-950 to-brand-800 rounded-2xl p-8 sm:p-12 fade-in">
+        <div class="max-w-2xl mb-8">
+          <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">
+            Perguntas que o BetaFleet responde para o gestor.
+          </h3>
+          <p class="text-zinc-300 leading-relaxed">
+            A plataforma foi pensada para quem precisa decidir sobre a frota com base em dados concretos, não em suposições.
+          </p>
+        </div>
+        <ul class="grid sm:grid-cols-2 gap-x-10 gap-y-4">
+          <li class="flex items-start gap-3">
+            <i data-lucide="help-circle" class="w-5 h-5 text-accent-400 shrink-0 mt-0.5"></i>
+            <span class="text-sm text-zinc-200">Quanto minha frota está custando, no total e por veículo?</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="help-circle" class="w-5 h-5 text-accent-400 shrink-0 mt-0.5"></i>
+            <span class="text-sm text-zinc-200">Quais veículos concentram as maiores despesas?</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="help-circle" class="w-5 h-5 text-accent-400 shrink-0 mt-0.5"></i>
+            <span class="text-sm text-zinc-200">Quais veículos estão parados, por quê e há quanto tempo?</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="help-circle" class="w-5 h-5 text-accent-400 shrink-0 mt-0.5"></i>
+            <span class="text-sm text-zinc-200">Onde os custos estão concentrados e onde dá para economizar?</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="help-circle" class="w-5 h-5 text-accent-400 shrink-0 mt-0.5"></i>
+            <span class="text-sm text-zinc-200">O que precisa de manutenção preventiva antes de quebrar?</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="help-circle" class="w-5 h-5 text-accent-400 shrink-0 mt-0.5"></i>
+            <span class="text-sm text-zinc-200">A frota está sendo bem utilizada ou há ativos ociosos?</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- COMPARATIVO ANTES/DEPOIS -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section id="antes-depois" class="py-20 lg:py-28 bg-zinc-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-14 fade-in">
+        <p class="eyebrow">Comparativo</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4 tracking-tight">
+          Gestão tradicional vs. gestão com BetaFleet
+        </h2>
+        <p class="text-lg text-zinc-600 leading-relaxed">
+          O que muda na prática quando a frota deixa as planilhas e passa a ser gerida em uma plataforma.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 fade-in">
+        <!-- Antes -->
+        <div class="bg-white rounded-2xl p-8 border border-zinc-200/70">
+          <h3 class="text-xl font-bold text-zinc-900 mb-6">Sem BetaFleet</h3>
           <ul class="space-y-4">
             <li class="flex items-start gap-3">
-              <i data-lucide="x-circle" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+              <i data-lucide="x-circle" class="w-5 h-5 text-zinc-400 shrink-0 mt-0.5"></i>
               <span class="text-sm text-zinc-700">Planilhas descentralizadas e desatualizadas</span>
             </li>
             <li class="flex items-start gap-3">
-              <i data-lucide="x-circle" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+              <i data-lucide="x-circle" class="w-5 h-5 text-zinc-400 shrink-0 mt-0.5"></i>
               <span class="text-sm text-zinc-700">Informações atrasadas e inconsistentes</span>
             </li>
             <li class="flex items-start gap-3">
-              <i data-lucide="x-circle" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+              <i data-lucide="x-circle" class="w-5 h-5 text-zinc-400 shrink-0 mt-0.5"></i>
               <span class="text-sm text-zinc-700">Baixa visibilidade sobre custos reais da frota</span>
             </li>
             <li class="flex items-start gap-3">
-              <i data-lucide="x-circle" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+              <i data-lucide="x-circle" class="w-5 h-5 text-zinc-400 shrink-0 mt-0.5"></i>
               <span class="text-sm text-zinc-700">Decisões reativas, tomadas tarde demais</span>
             </li>
             <li class="flex items-start gap-3">
-              <i data-lucide="x-circle" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+              <i data-lucide="x-circle" class="w-5 h-5 text-zinc-400 shrink-0 mt-0.5"></i>
               <span class="text-sm text-zinc-700">Falta de histórico confiável para análise</span>
             </li>
             <li class="flex items-start gap-3">
-              <i data-lucide="x-circle" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+              <i data-lucide="x-circle" class="w-5 h-5 text-zinc-400 shrink-0 mt-0.5"></i>
               <span class="text-sm text-zinc-700">Manutenção corretiva como padrão, não exceção</span>
             </li>
             <li class="flex items-start gap-3">
-              <i data-lucide="x-circle" class="w-5 h-5 text-red-400 shrink-0 mt-0.5"></i>
+              <i data-lucide="x-circle" class="w-5 h-5 text-zinc-400 shrink-0 mt-0.5"></i>
               <span class="text-sm text-zinc-700">Sem indicadores para justificar investimentos</span>
             </li>
           </ul>
         </div>
 
         <!-- Depois -->
-        <div class="bg-gradient-to-br from-brand-950 to-brand-800 rounded-2xl p-8 border border-brand-700">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-10 h-10 bg-green-500/20 rounded-xl flex items-center justify-center">
-              <i data-lucide="check" class="w-5 h-5 text-green-400"></i>
-            </div>
-            <h3 class="text-xl font-bold text-white">Com BetaFleet</h3>
-          </div>
+        <div class="bg-gradient-to-br from-brand-950 to-brand-800 rounded-2xl p-8">
+          <h3 class="text-xl font-bold text-white mb-6">Com BetaFleet</h3>
           <ul class="space-y-4">
             <li class="flex items-start gap-3">
-              <i data-lucide="check-circle" class="w-5 h-5 text-green-400 shrink-0 mt-0.5"></i>
-              <span class="text-sm text-zinc-200">Dados centralizados e atualizados em tempo real</span>
+              <i data-lucide="check-circle" class="w-5 h-5 text-accent-400 shrink-0 mt-0.5"></i>
+              <span class="text-sm text-zinc-200">Dados centralizados e atualizados</span>
             </li>
             <li class="flex items-start gap-3">
-              <i data-lucide="check-circle" class="w-5 h-5 text-green-400 shrink-0 mt-0.5"></i>
-              <span class="text-sm text-zinc-200">Indicadores claros e acessíveis a qualquer momento</span>
+              <i data-lucide="check-circle" class="w-5 h-5 text-accent-400 shrink-0 mt-0.5"></i>
+              <span class="text-sm text-zinc-200">Indicadores claros, acessíveis a qualquer momento</span>
             </li>
             <li class="flex items-start gap-3">
-              <i data-lucide="check-circle" class="w-5 h-5 text-green-400 shrink-0 mt-0.5"></i>
-              <span class="text-sm text-zinc-200">Controle financeiro completo por veículo e por frota</span>
+              <i data-lucide="check-circle" class="w-5 h-5 text-accent-400 shrink-0 mt-0.5"></i>
+              <span class="text-sm text-zinc-200">Controle financeiro por veículo e por frota</span>
             </li>
             <li class="flex items-start gap-3">
-              <i data-lucide="check-circle" class="w-5 h-5 text-green-400 shrink-0 mt-0.5"></i>
-              <span class="text-sm text-zinc-200">Decisões baseadas em evidências e dados concretos</span>
+              <i data-lucide="check-circle" class="w-5 h-5 text-accent-400 shrink-0 mt-0.5"></i>
+              <span class="text-sm text-zinc-200">Decisões baseadas em dados concretos</span>
             </li>
             <li class="flex items-start gap-3">
-              <i data-lucide="check-circle" class="w-5 h-5 text-green-400 shrink-0 mt-0.5"></i>
-              <span class="text-sm text-zinc-200">Histórico completo e confiável para análise de tendências</span>
+              <i data-lucide="check-circle" class="w-5 h-5 text-accent-400 shrink-0 mt-0.5"></i>
+              <span class="text-sm text-zinc-200">Histórico completo para análise de tendências</span>
             </li>
             <li class="flex items-start gap-3">
-              <i data-lucide="check-circle" class="w-5 h-5 text-green-400 shrink-0 mt-0.5"></i>
-              <span class="text-sm text-zinc-200">Gestão preventiva com alertas e agendamentos automáticos</span>
+              <i data-lucide="check-circle" class="w-5 h-5 text-accent-400 shrink-0 mt-0.5"></i>
+              <span class="text-sm text-zinc-200">Gestão preventiva com alertas e agendamentos</span>
             </li>
             <li class="flex items-start gap-3">
-              <i data-lucide="check-circle" class="w-5 h-5 text-green-400 shrink-0 mt-0.5"></i>
+              <i data-lucide="check-circle" class="w-5 h-5 text-accent-400 shrink-0 mt-0.5"></i>
               <span class="text-sm text-zinc-200">KPIs que justificam investimentos e orientam a estratégia</span>
             </li>
           </ul>
@@ -996,125 +1051,105 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- SEÇÃO PARA GESTORES E DECISORES -->
+  <!-- CONFIANÇA E SEGURANÇA -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-20 lg:py-28 bg-zinc-50">
+  <section id="confianca" class="py-20 lg:py-28 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
-        <span class="inline-flex items-center gap-2 text-sm font-semibold text-accent-500 uppercase tracking-wider mb-4">
-          <i data-lucide="target" class="w-4 h-4"></i>
-          Para gestores e decisores
-        </span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4">
-          Responda as perguntas que importam para o seu negócio.
+      <div class="max-w-3xl mb-14 fade-in">
+        <p class="eyebrow">Confiança e segurança</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4 tracking-tight">
+          Uma plataforma construída para operações sérias.
         </h2>
         <p class="text-lg text-zinc-600 leading-relaxed">
-          O BetaFleet foi pensado para quem precisa tomar decisões estratégicas sobre a frota com base em dados concretos, não em suposições.
+          Segurança, organização e escalabilidade para acompanhar o crescimento da sua operação.
         </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 fade-in">
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 shadow-sm">
-          <div class="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="dollar-sign" class="w-5 h-5 text-brand-700"></i>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 fade-in">
+        <div class="rounded-2xl border border-zinc-200/70 p-6">
+          <div class="w-10 h-10 bg-zinc-100 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="lock" class="w-5 h-5 text-zinc-700"></i>
           </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">Quanto minha frota está custando?</h3>
-          <p class="text-sm text-zinc-600">Acompanhe o custo total da frota, custo por veículo e custo por tipo de manutenção em tempo real.</p>
+          <h3 class="font-semibold text-zinc-900 mb-2">Dados protegidos</h3>
+          <p class="text-sm text-zinc-600">Informações da frota em infraestrutura segura, com boas práticas de proteção de dados.</p>
         </div>
 
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 shadow-sm">
-          <div class="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="alert-circle" class="w-5 h-5 text-brand-700"></i>
+        <div class="rounded-2xl border border-zinc-200/70 p-6">
+          <div class="w-10 h-10 bg-zinc-100 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="database" class="w-5 h-5 text-zinc-700"></i>
           </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">Quais veículos geram mais despesas?</h3>
-          <p class="text-sm text-zinc-600">Identifique os veículos com maior custo acumulado e avalie se vale a pena mantê-los na operação.</p>
+          <h3 class="font-semibold text-zinc-900 mb-2">Histórico confiável</h3>
+          <p class="text-sm text-zinc-600">Registro completo de operações, manutenções, checklists e movimentações.</p>
         </div>
 
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 shadow-sm">
-          <div class="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="truck" class="w-5 h-5 text-brand-700"></i>
+        <div class="rounded-2xl border border-zinc-200/70 p-6">
+          <div class="w-10 h-10 bg-zinc-100 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="users" class="w-5 h-5 text-zinc-700"></i>
           </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">Quais veículos estão indisponíveis?</h3>
-          <p class="text-sm text-zinc-600">Saiba exatamente quais veículos estão parados, por qual motivo e há quanto tempo.</p>
+          <h3 class="font-semibold text-zinc-900 mb-2">Controle de acesso</h3>
+          <p class="text-sm text-zinc-600">Perfis por função: gestor, analista, motorista, oficina e administrador.</p>
         </div>
 
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 shadow-sm">
-          <div class="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="trending-down" class="w-5 h-5 text-brand-700"></i>
+        <div class="rounded-2xl border border-zinc-200/70 p-6">
+          <div class="w-10 h-10 bg-zinc-100 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide="trending-up" class="w-5 h-5 text-zinc-700"></i>
           </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">Onde estou perdendo margem?</h3>
-          <p class="text-sm text-zinc-600">Visualize onde os custos estão concentrados e identifique oportunidades de economia imediata.</p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 shadow-sm">
-          <div class="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="shield" class="w-5 h-5 text-brand-700"></i>
-          </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">O que precisa de manutenção preventiva?</h3>
-          <p class="text-sm text-zinc-600">Receba alertas de manutenções pendentes e evite que veículos quebrem durante a operação.</p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-6 border border-zinc-100 shadow-sm">
-          <div class="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="bar-chart-3" class="w-5 h-5 text-brand-700"></i>
-          </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">Minha frota está sendo bem utilizada?</h3>
-          <p class="text-sm text-zinc-600">Acompanhe indicadores de utilização, disponibilidade e produtividade de cada veículo da frota.</p>
+          <h3 class="font-semibold text-zinc-900 mb-2">Escalável</h3>
+          <p class="text-sm text-zinc-600">Preparada para crescer com a operação, de dezenas a milhares de veículos.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- SEÇÃO DE CONFIANÇA -->
+  <!-- FAQ -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section class="py-20 lg:py-28 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
-        <span class="inline-flex items-center gap-2 text-sm font-semibold text-accent-500 uppercase tracking-wider mb-4">
-          <i data-lucide="shield-check" class="w-4 h-4"></i>
-          Confiança e segurança
-        </span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4">
-          Uma plataforma construída para operações sérias.
+  <section id="faq" class="py-20 lg:py-28 bg-zinc-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12 fade-in">
+        <p class="eyebrow">Perguntas frequentes</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-900 mb-4 tracking-tight">
+          O que as empresas costumam perguntar.
         </h2>
-        <p class="text-lg text-zinc-600 leading-relaxed">
-          O BetaFleet foi desenvolvido com foco em segurança, organização e escalabilidade para acompanhar o crescimento da sua operação.
-        </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-in">
-        <div class="text-center p-6">
-          <div class="w-14 h-14 bg-zinc-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <i data-lucide="lock" class="w-7 h-7 text-zinc-700"></i>
+      <div class="fade-in">
+        <details class="faq-item">
+          <summary>Para quem o BetaFleet foi feito?</summary>
+          <div class="faq-body">
+            Para empresas que operam frota própria e precisam de controle sobre veículos, motoristas, manutenção e custos — de operações com poucos veículos a frotas com centenas de ativos. O público típico são gestores de frota, gestores de logística e responsáveis pela operação.
           </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">Dados Seguros</h3>
-          <p class="text-sm text-zinc-600">Informações protegidas com infraestrutura segura e boas práticas de proteção de dados.</p>
-        </div>
-
-        <div class="text-center p-6">
-          <div class="w-14 h-14 bg-zinc-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <i data-lucide="database" class="w-7 h-7 text-zinc-700"></i>
+        </details>
+        <details class="faq-item">
+          <summary>Quais módulos a plataforma inclui?</summary>
+          <div class="faq-body">
+            Cadastro de veículos, gestão de motoristas, controle de manutenção com ordens de serviço, aprovação de orçamentos, checklists digitais, agendamentos, planos de ação e dashboards com indicadores operacionais e financeiros.
           </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">Histórico Confiável</h3>
-          <p class="text-sm text-zinc-600">Registro completo de todas as operações, manutenções, checklists e movimentações da frota.</p>
-        </div>
-
-        <div class="text-center p-6">
-          <div class="w-14 h-14 bg-zinc-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <i data-lucide="users" class="w-7 h-7 text-zinc-700"></i>
+        </details>
+        <details class="faq-item">
+          <summary>É possível controlar quem acessa cada parte do sistema?</summary>
+          <div class="faq-body">
+            Sim. A plataforma trabalha com perfis de acesso por função — gestor, analista, motorista, oficina e administrador — para que cada pessoa veja e faça apenas o que cabe ao seu papel.
           </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">Controle de Acesso</h3>
-          <p class="text-sm text-zinc-600">Perfis de acesso por função: gestor, analista, motorista, oficina e administrador.</p>
-        </div>
-
-        <div class="text-center p-6">
-          <div class="w-14 h-14 bg-zinc-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <i data-lucide="trending-up" class="w-7 h-7 text-zinc-700"></i>
+        </details>
+        <details class="faq-item">
+          <summary>O BetaFleet atende frotas de que tamanho?</summary>
+          <div class="faq-body">
+            A plataforma é dimensionada para acompanhar o crescimento da operação, de frotas com poucos veículos a operações com centenas de ativos. Na demonstração, mostramos o funcionamento com um cenário próximo ao da sua frota.
           </div>
-          <h3 class="font-semibold text-zinc-900 mb-2">Escalável</h3>
-          <p class="text-sm text-zinc-600">Plataforma preparada para crescer com sua operação, de 10 a milhares de veículos.</p>
-        </div>
+        </details>
+        <details class="faq-item">
+          <summary>Como funciona a demonstração?</summary>
+          <div class="faq-body">
+            Você preenche o formulário com seus dados e o tamanho da frota, e retornamos em até 24 horas úteis para agendar uma apresentação personalizada, sem compromisso.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Como tiro outras dúvidas?</summary>
+          <div class="faq-body">
+            Você pode falar diretamente com um especialista pelo formulário de contato ou escrever para <a href="mailto:contato@betafleet.com.br" class="text-accent-600 font-medium hover:underline">contato@betafleet.com.br</a>.
+          </div>
+        </details>
       </div>
     </div>
   </section>
@@ -1122,30 +1157,20 @@
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- CTA FINAL -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section id="cta-final" class="gradient-cta py-20 lg:py-28 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-5">
-      <div class="absolute top-10 right-20 w-80 h-80 bg-accent-500 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-10 left-10 w-64 h-64 bg-blue-500 rounded-full blur-3xl"></div>
-    </div>
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 fade-in">
-      <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-6">
-        <span class="text-2xl font-bold text-accent-400">β</span>
-        <span class="text-xs font-medium text-zinc-300">BetaFleet</span>
-      </div>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-        Pronto para transformar sua frota em uma operação mais eficiente, previsível e rentável?
+  <section id="cta-final" class="gradient-cta py-20 lg:py-28">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6 leading-tight tracking-tight">
+        Veja o BetaFleet funcionando com um cenário próximo ao da sua frota.
       </h2>
       <p class="text-lg text-zinc-300 leading-relaxed mb-10 max-w-2xl mx-auto">
-        Descubra como o BetaFleet pode ajudar sua empresa a reduzir custos operacionais, aumentar a disponibilidade da frota e tomar decisões com base em dados reais.
+        Agende uma demonstração e descubra como centralizar a gestão da frota, ganhar visibilidade sobre custos e decidir com base em dados reais.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <button onclick="openModal('demo')" class="inline-flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-semibold px-8 py-4 rounded-xl transition-all shadow-lg shadow-accent-500/20 hover:shadow-accent-500/30 text-lg cursor-pointer">
-          <i data-lucide="calendar" class="w-5 h-5"></i>
-          Solicitar Demonstração
+        <button onclick="openModal('demo')" class="inline-flex items-center justify-center bg-accent-500 hover:bg-accent-600 text-white font-semibold px-8 py-4 rounded-xl transition-colors text-lg cursor-pointer">
+          Solicitar demonstração
         </button>
-        <button onclick="openModal('especialista')" class="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium px-8 py-4 rounded-xl transition-all text-lg cursor-pointer">
-          <i data-lucide="message-circle" class="w-5 h-5"></i>
-          Falar com um Especialista
+        <button onclick="openModal('especialista')" class="inline-flex items-center justify-center bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium px-8 py-4 rounded-xl transition-colors text-lg cursor-pointer">
+          Falar com um especialista
         </button>
       </div>
       <p class="text-sm text-zinc-500 mt-8">
@@ -1154,28 +1179,51 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- FOOTER -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <footer class="bg-brand-950 border-t border-white/5 py-12">
+  <footer class="bg-brand-950 border-t border-white/5 py-14">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="flex items-center gap-2">
+      <div class="grid md:grid-cols-3 gap-10 items-start">
+        <div>
           <span class="text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-baseline">
             <span class="text-accent-500 drop-shadow-[0_0_8px_rgba(249,115,22,0.5)]">β</span>etaFleet
           </span>
-          <span class="text-[10px] font-medium text-zinc-500 uppercase tracking-[0.2em] ml-2">
+          <p class="text-[10px] font-medium text-zinc-500 uppercase tracking-[0.2em] mt-2">
             Evolution always
-          </span>
+          </p>
+          <p class="text-sm text-zinc-400 mt-4 max-w-xs leading-relaxed">
+            Plataforma de gestão de frotas: veículos, motoristas, manutenção e custos em um só lugar.
+          </p>
         </div>
-        <div class="flex items-center gap-8">
-          <a href="#dores" class="text-sm text-zinc-400 hover:text-white transition-colors">Problemas</a>
-          <a href="#solucao" class="text-sm text-zinc-400 hover:text-white transition-colors">Solução</a>
-          <a href="#funcionalidades" class="text-sm text-zinc-400 hover:text-white transition-colors">Funcionalidades</a>
-          <a href="#cta-final" class="text-sm text-zinc-400 hover:text-white transition-colors">Contato</a>
+        <nav aria-label="Links do rodapé">
+          <h3 class="text-sm font-semibold text-white mb-4">Navegação</h3>
+          <ul class="space-y-2.5">
+            <li><a href="#dores" class="text-sm text-zinc-400 hover:text-white transition-colors">Desafios</a></li>
+            <li><a href="#solucao" class="text-sm text-zinc-400 hover:text-white transition-colors">Solução</a></li>
+            <li><a href="#funcionalidades" class="text-sm text-zinc-400 hover:text-white transition-colors">Funcionalidades</a></li>
+            <li><a href="#como-funciona" class="text-sm text-zinc-400 hover:text-white transition-colors">Como funciona</a></li>
+            <li><a href="#faq" class="text-sm text-zinc-400 hover:text-white transition-colors">Perguntas frequentes</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h3 class="text-sm font-semibold text-white mb-4">Contato</h3>
+          <ul class="space-y-2.5">
+            <li>
+              <a href="mailto:contato@betafleet.com.br" class="text-sm text-zinc-400 hover:text-white transition-colors">contato@betafleet.com.br</a>
+            </li>
+            <li>
+              <button onclick="openModal('demo')" class="text-sm text-accent-400 hover:text-accent-500 font-medium transition-colors cursor-pointer">Solicitar demonstração</button>
+            </li>
+            <li>
+              <button onclick="openModal('especialista')" class="text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer">Falar com um especialista</button>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="border-t border-white/5 mt-8 pt-8 text-center">
+      <div class="border-t border-white/5 mt-10 pt-8 text-center">
         <p class="text-xs text-zinc-500">
           &copy; 2026 BetaFleet. Todos os direitos reservados. Plataforma de gestão inteligente de frota.
         </p>
@@ -1186,9 +1234,9 @@
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- MODAL DE DEMONSTRAÇÃO -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <div id="demoModal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div id="demoModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="if(event.target===this)closeModal()">
     <div class="modal-content">
-      <button class="modal-close" onclick="closeModal()">
+      <button class="modal-close" onclick="closeModal()" aria-label="Fechar">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
@@ -1205,19 +1253,19 @@
           <input type="hidden" name="_subject" id="formSubject" value="Solicitação de Demonstração - BetaFleet">
           <div class="form-group">
             <label class="form-label" for="nome">Nome</label>
-            <input class="form-input" type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+            <input class="form-input" type="text" id="nome" name="nome" required placeholder="Seu nome completo" autocomplete="name">
           </div>
           <div class="form-group">
             <label class="form-label" for="empresa">Empresa</label>
-            <input class="form-input" type="text" id="empresa" name="empresa" required placeholder="Nome da empresa">
+            <input class="form-input" type="text" id="empresa" name="empresa" required placeholder="Nome da empresa" autocomplete="organization">
           </div>
           <div class="form-group">
             <label class="form-label" for="email">E-mail</label>
-            <input class="form-input" type="email" id="email" name="email" required placeholder="seu@email.com">
+            <input class="form-input" type="email" id="email" name="email" required placeholder="seu@email.com" autocomplete="email">
           </div>
           <div class="form-group">
             <label class="form-label" for="telefone">Telefone</label>
-            <input class="form-input" type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
+            <input class="form-input" type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" autocomplete="tel">
           </div>
           <div class="form-group">
             <label class="form-label" for="frota">Tamanho da Frota</label>
@@ -1233,7 +1281,7 @@
             <label class="form-label" for="mensagem">Mensagem <span class="text-zinc-400 font-normal">(opcional)</span></label>
             <textarea class="form-textarea" id="mensagem" name="mensagem" placeholder="Conte um pouco sobre sua necessidade"></textarea>
           </div>
-          <div class="form-error" id="formError"></div>
+          <div class="form-error" id="formError" role="alert"></div>
           <button class="form-btn" type="submit" id="submitBtn">
             Solicitar Demonstração
           </button>
@@ -1258,6 +1306,7 @@
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <script>
     // Modal
+    let lastFocusedElement = null;
     function openModal(type) {
       const title = document.getElementById('modalTitle');
       const desc = document.getElementById('modalDesc');
@@ -1288,12 +1337,18 @@
       }
 
       lucide.createIcons();
+      lastFocusedElement = document.activeElement;
       document.getElementById('demoModal').classList.add('open');
       document.body.classList.add('modal-open');
+      document.getElementById('nome').focus();
     }
     function closeModal() {
       document.getElementById('demoModal').classList.remove('open');
       document.body.classList.remove('modal-open');
+      if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+        lastFocusedElement.focus();
+        lastFocusedElement = null;
+      }
     }
 
     // Form submission
@@ -1343,13 +1398,17 @@
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+      const isOpen = !mobileMenu.classList.toggle('hidden');
+      mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+      mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
     });
 
     // Close mobile menu on link click
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.setAttribute('aria-label', 'Abrir menu');
       });
     });
 
@@ -1373,6 +1432,48 @@
         nav.classList.remove('shadow-lg');
       }
     });
+
+    // Hero video: respeita preferência de movimento reduzido e economia de dados
+    (function () {
+      const heroVideo = document.getElementById('hero-video');
+      const toggleBtn = document.getElementById('hero-video-toggle');
+      if (!heroVideo) return;
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const saveData = navigator.connection && navigator.connection.saveData;
+
+      function updateToggle(paused) {
+        if (!toggleBtn) return;
+        toggleBtn.setAttribute('aria-label', paused ? 'Reproduzir vídeo' : 'Pausar vídeo');
+        toggleBtn.setAttribute('aria-pressed', String(paused));
+        const iconEl = toggleBtn.querySelector('i, svg');
+        if (iconEl) {
+          iconEl.outerHTML = '<i data-lucide="' + (paused ? 'play' : 'pause') + '" class="w-4 h-4"></i>';
+          lucide.createIcons();
+        }
+      }
+
+      if (prefersReducedMotion || saveData) {
+        heroVideo.removeAttribute('autoplay');
+        heroVideo.pause();
+        updateToggle(true);
+      } else {
+        const p = heroVideo.play();
+        if (p && typeof p.catch === 'function') p.catch(() => updateToggle(true));
+      }
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          if (heroVideo.paused) {
+            heroVideo.play();
+            updateToggle(false);
+          } else {
+            heroVideo.pause();
+            updateToggle(true);
+          }
+        });
+      }
+    })();
   </script>
 </body>
 </html>
