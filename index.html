@@ -62,9 +62,6 @@
     html { scroll-behavior: smooth; }
     body { text-rendering: optimizeLegibility; }
 
-    .gradient-hero {
-      background: linear-gradient(160deg, #0f172a 0%, #1e293b 55%, #1e3a5f 100%);
-    }
     .gradient-cta {
       background: linear-gradient(135deg, #1e293b 0%, #1e3a5f 50%, #0f172a 100%);
     }
@@ -340,60 +337,50 @@
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <!-- HERO -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <section id="inicio" class="gradient-hero pt-28 pb-16 lg:pt-36 lg:pb-24 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-        <div class="lg:col-span-6 fade-in">
-          <p class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-6 text-xs font-medium text-zinc-300">
-            Plataforma de gestão de frotas
-          </p>
-          <h1 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white leading-tight mb-6 tracking-tight">
-            Sua frota sob controle: custos, manutenção e disponibilidade em <span class="text-accent-400">uma única plataforma</span>.
-          </h1>
-          <p class="text-lg text-zinc-300 leading-relaxed mb-8 max-w-xl">
-            O BetaFleet centraliza veículos, motoristas, manutenções e custos, e transforma essas informações em indicadores claros — para reduzir despesas, evitar paradas não planejadas e manter mais veículos disponíveis para operar.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <button onclick="openModal('demo')" class="inline-flex items-center justify-center bg-accent-500 hover:bg-accent-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-colors cursor-pointer">
-              Solicitar demonstração
-            </button>
-            <a href="#como-funciona" class="inline-flex items-center justify-center bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium px-7 py-3.5 rounded-xl transition-colors">
-              Ver como funciona
-            </a>
-          </div>
-          <p class="text-sm text-zinc-400 mt-6">
-            Demonstração personalizada para a sua operação, sem compromisso.
-          </p>
-        </div>
+  <section id="inicio" class="relative overflow-hidden min-h-[640px] flex items-center pt-16">
+    <video
+      id="hero-video"
+      class="absolute inset-0 w-full h-full object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster="assets/hero-fleet-poster.jpg"
+      aria-label="Vídeo de um caminhão de frota chegando a um centro logístico">
+      <source src="assets/hero-fleet.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-r from-brand-950/95 via-brand-950/80 to-brand-950/50" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-transparent to-brand-950/30" aria-hidden="true"></div>
 
-        <!-- Vídeo do Hero -->
-        <div class="lg:col-span-6 fade-in">
-          <div class="relative rounded-2xl overflow-hidden mockup-shadow border border-white/10">
-            <video
-              id="hero-video"
-              class="w-full aspect-video object-cover"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-              poster="assets/hero-fleet-poster.jpg"
-              aria-label="Vídeo de um caminhão de frota chegando a um centro logístico">
-              <source src="assets/hero-fleet.mp4" type="video/mp4" />
-            </video>
-            <div class="absolute inset-0 bg-gradient-to-t from-brand-950/70 via-transparent to-transparent pointer-events-none" aria-hidden="true"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between gap-4">
-              <p class="text-sm text-zinc-200 font-medium max-w-xs">
-                Do pátio ao painel de indicadores: a operação inteira, visível.
-              </p>
-              <button id="hero-video-toggle" class="shrink-0 bg-white/10 hover:bg-white/20 border border-white/15 text-white rounded-full p-2 transition-colors cursor-pointer" aria-label="Pausar vídeo" aria-pressed="false">
-                <i data-lucide="pause" class="w-4 h-4" id="hero-video-toggle-icon"></i>
-              </button>
-            </div>
-          </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 lg:py-28 w-full">
+      <div class="max-w-2xl fade-in">
+        <p class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-6 text-xs font-medium text-zinc-300">
+          Plataforma de gestão de frotas
+        </p>
+        <h1 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white leading-tight mb-6 tracking-tight">
+          Sua frota sob controle: custos, manutenção e disponibilidade em <span class="text-accent-400">uma única plataforma</span>.
+        </h1>
+        <p class="text-lg text-zinc-300 leading-relaxed mb-8 max-w-xl">
+          O BetaFleet centraliza veículos, motoristas, manutenções e custos, e transforma essas informações em indicadores claros — para reduzir despesas, evitar paradas não planejadas e manter mais veículos disponíveis para operar.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button onclick="openModal('demo')" class="inline-flex items-center justify-center bg-accent-500 hover:bg-accent-600 text-white font-semibold px-7 py-3.5 rounded-xl transition-colors cursor-pointer">
+            Solicitar demonstração
+          </button>
+          <a href="#como-funciona" class="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium px-7 py-3.5 rounded-xl transition-colors backdrop-blur-sm">
+            Ver como funciona
+          </a>
         </div>
+        <p class="text-sm text-zinc-400 mt-6">
+          Demonstração personalizada para a sua operação, sem compromisso.
+        </p>
       </div>
     </div>
+
+    <button id="hero-video-toggle" class="absolute bottom-5 right-5 z-10 shrink-0 bg-white/10 hover:bg-white/20 border border-white/15 text-white rounded-full p-2.5 transition-colors cursor-pointer backdrop-blur-sm" aria-label="Pausar vídeo" aria-pressed="false">
+      <i data-lucide="pause" class="w-4 h-4" id="hero-video-toggle-icon"></i>
+    </button>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
